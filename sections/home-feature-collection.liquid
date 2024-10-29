@@ -1,0 +1,283 @@
+{{ 'home-featured-products.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'ajaxinate.min.js' | asset_url | script_tag }}
+{% if section.settings.image_shape == 'blob' %}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{%- unless section.settings.quick_add == 'none' -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+{%- endunless -%}
+
+{%- if section.settings.quick_add == 'standard' -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- if section.settings.quick_add == 'bulk' -%}
+  <script src="{{ 'quick-add-bulk.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+<style data-shopify="">
+  .featured-products-section#template--{{ section.id }}__home_featured_products_BgEDkw {
+    margin-top: 80px;
+    aspect-ratio: 16 / 7.7;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    max-height: 780px;
+  }.featured-products-section#template--{{ section.id }}__home_featured_products_BgEDkw .block-bg-image-container {
+      aspect-ratio: 3600 / 1950;
+    }.featured-products-section#template--{{ section.id }}__home_featured_products_BgEDkw .section-data-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  @media only screen and (max-width: 900px) {
+    .featured-products-section#template--{{ section.id }}__home_featured_products_BgEDkw {
+      margin-top: 30px;
+      aspect-ratio: 35 / 69;aspect-ratio: 720 / 1420;max-height: unset;
+    }.featured-products-section#template--{{ section.id }}__home_featured_products_BgEDkw .block-bg-image-container {
+        aspect-ratio: 720 / 1420;
+      }.featured-products-section#template--{{ section.id }}__home_featured_products_BgEDkw .section-data-container {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+  }
+</style>
+{% assign collection1 = section.settings.collection1 %}
+{% assign collection2 = section.settings.collection2 %}
+<div
+  class="featured-products-section {{ section.settings.class_name }}"
+  id="template--{{ section.id }}__home_featured_products_BgEDkw"
+>
+  <div class="block-bg-image-container">
+    <div class="bg-image-container active" data-filter="0">
+      {% if section.settings.desk_image_bg1 != blank %}
+        <img
+          src="{{ section.settings.desk_image_bg1 | image_url: width: auto}}"
+          loading="lazy"
+          width="auto"
+          height="auto"
+          class="featured-product-slider-image desktop"
+        >
+      {% endif %}
+      {% if section.settings.mon_image_bg1 != blank %}
+        <img
+          src="{{ section.settings.mon_image_bg1 | image_url: width: auto}}"
+          loading="lazy"
+          width="auto"
+          height="auto"
+          class="featured-product-slider-image mobile"
+        >
+      {% endif %}
+    </div>
+    <div class="bg-image-container fade-out" data-filter="1">
+      {% if section.settings.desk_image_bg2 != blank %}
+        <img
+          src="{{ section.settings.desk_image_bg2 | image_url: width: auto}}"
+          loading="lazy"
+          width="auto"
+          height="auto"
+          class="featured-product-slider-image desktop"
+        >
+      {% endif %}
+      {% if section.settings.mob_image_bg2 != blank %}
+        <img
+          src="{{ section.settings.mob_image_bg2 | image_url: width: auto}}"
+          loading="lazy"
+          width="auto"
+          height="auto"
+          class="featured-product-slider-image mobile"
+        >
+      {% endif %}
+    </div>
+  </div>
+  <div class="section-data-container">
+    <div class="section-header-container page-width">
+      <div class="filters-container">
+        <button class="filter active" data-filter="0">{{ collection1.title }}</button>
+        <button class="filter" data-filter="1">{{ collection2.title }}</button>
+      </div>
+    </div>
+    <div data-id="swiper1" class="swiper-container active" data-filter="0">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for product in collections[collection1].products limit: 5 %}
+            <div class="swiper-slide">
+              {% render 'custom-product', card_product: product %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div
+        class="swiper-pagination page-width swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+      ></div>
+    </div>
+    <div data-id="swiper2" class="swiper-container" data-filter="1">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for product2 in collections[collection2].products limit: 5 %}
+            <div class="swiper-slide">
+              {% render 'custom-product', card_product: product2 %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div
+        class="swiper-pagination page-width swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+      ></div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Home Feature Collection",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desk_image_bg1",
+      "label": "Desktop Background Image1"
+    },
+    {
+      "type": "image_picker",
+      "id": "mon_image_bg1",
+      "label": "Mobile Background Image1"
+    },
+    {
+      "type": "image_picker",
+      "id": "desk_image_bg2",
+      "label": "Desktop Background Image2"
+    },
+    {
+      "type": "image_picker",
+      "id": "mob_image_bg2",
+      "label": "Mobile Background Image2"
+    },
+    {
+      "type": "collection",
+      "id": "collection1",
+      "label": "Collection 1"
+    },
+    {
+      "type": "collection",
+      "id": "collection2",
+      "label": "Collection 2"
+    },
+    {
+      "type": "text",
+      "id": "class_name",
+      "label": "Class Name"
+    },
+    {
+      "type": "select",
+      "id": "quick_add",
+      "default": "none",
+      "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
+      "info": "t:sections.main-collection-product-grid.settings.quick_add.info",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_1"
+        },
+        {
+          "value": "standard",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
+        },
+        {
+          "value": "bulk",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Feature Collection"
+    }
+  ]
+}
+{% endschema %}
+<script>
+ function homeFeaturedCategory() {
+  let backgrounds = document.querySelectorAll('#template--{{ section.id }}__home_featured_products_BgEDkw .bg-image-container');
+  let swipers = document.querySelectorAll('#template--{{ section.id }}__home_featured_products_BgEDkw .swiper-container');
+  let buttons = document.querySelectorAll('#template--{{ section.id }}__home_featured_products_BgEDkw .filters-container .filter');
+
+  let swiperArr = [];
+
+  for (let i = 1; i <= 2; i++) {
+    let swiper = new Swiper(`#template--{{ section.id }}__home_featured_products_BgEDkw [data-id="swiper${i}"] .swiper`, {
+      slidesPerView: 1,  // Default slidesPerView for all screen sizes
+      spaceBetween: 5,
+      grabCursor: true,
+      slidesOffsetAfter: 30,
+      updateOnWindowResize: true,
+      lazy: true,
+      breakpoints: {
+        // Mobile devices
+        0: {
+          slidesPerView: 1, // Ensure only 1 item on mobile
+          spaceBetween: 5,
+        },
+        // Larger screens (desktops/tablets)
+        900: {
+          slidesPerView: 1.85, // Show 1.85 items on larger screens
+          spaceBetween: 10,
+        },
+      },
+      pagination: {
+        el: `#template--{{ section.id }}__home_featured_products_BgEDkw [data-id="swiper${i}"] .swiper-pagination`,
+        clickable: true,
+      },
+    });
+    swiperArr.push(swiper);
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener('click', event => {
+      // Handle background and swiper changes on button click
+      backgrounds.forEach(el => {
+        if (event.target.getAttribute('data-filter') === el.getAttribute('data-filter')) {
+          el.classList.add('active');
+          el.classList.remove('fade-out');
+        } else {
+          el.classList.remove('active');
+          el.classList.add('fade-out');
+        }
+      });
+
+      if (!event.currentTarget.classList.contains("active")) {
+        swiperArr[event.currentTarget.getAttribute('data-filter')].slideTo(0);
+      }
+
+      swipers.forEach(el => {
+        if (event.target.getAttribute('data-filter') === el.getAttribute('data-filter')) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
+      });
+
+      buttons.forEach(el => {
+        if (event.target.getAttribute('data-filter') === el.getAttribute('data-filter')) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
+      });
+    });
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", homeFeaturedCategory, { once: true });
+} else {
+  homeFeaturedCategory();
+}
+
+</script>

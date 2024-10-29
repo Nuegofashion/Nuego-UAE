@@ -1,0 +1,190 @@
+{{ 'home-accessories.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<style>
+    .home-accessories_bottom_section .swiper-pagination-bullet-active {
+      background-image: url("https://cdn.shopify.com/s/files/1/0703/7793/0993/files/Group_238007.jpg?v=1721800815");
+      width: var(--swiper-pagination-bullet-width,var(--swiper-pagination-bullet-size,14px));
+      height: var(--swiper-pagination-bullet-height,var(--swiper-pagination-bullet-size,14px));
+    }
+
+     .home-accessories_main_section {
+      margin-top: 60px;
+      padding-top: 5px;
+      padding-bottom:5px;
+    }
+  @media screen and (max-width: 760px) {
+    .home-accessories_main_section {
+      margin-top: 5px;
+    }
+  }
+</style>
+<div
+  class="home-accessories_main_section page-width section-{{ section.id }}-padding"
+  id="template--{{ section.id }}__home_accessories_7daidi"
+>
+  <div class="home-accessories_main_section_title">
+    <div class="home-accessories_first_Subsection_title">
+      {% if section.settings.title != blank %}
+        <h3>{{ section.settings.title }}</h3>
+      {% endif %}
+    </div>
+    <div class="home-accessories_second_Subsection_title">
+      {% if section.settings.sub_title != blank %}
+        <h3>{{ section.settings.sub_title }}</h3>
+      {% endif %}
+    </div>
+  </div>
+  <div class="home-accessories_bottom_section">
+    <div class="swiper home-accessories-template--{{ section.id }}__home_accessories_7daidi">
+      <div class="swiper-wrapper">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <div class="swiper-slide home-accessories_swiper_slider">
+              <a href="{{ block.settings.link }}" class="home-accessories_main_card">
+                <div class="home-accessories_slider_image_div">
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: auto}}"
+                      loading="lazy"
+                      width="auto"
+                      height="auto"
+                      class="home-accessories_slider_image"
+                    >
+                  {% endif %}
+                </div>
+              </a>
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+       <div class="swiper-pagination"></div>
+    </div>
+  </div>
+  <div class="home-accessories_bottom_section_mobile swiper most-slider mySwipper-gamechanger swiper-container">
+    <div class="swiper-wrapper">
+       {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        <div class="home-accessories_swiper_slider swiper-slide">
+          <a href="{{  block.settings.link }}" class="home-accessories_main_card">
+            <div class="home-accessories_slider_image_div">
+              {% if block.settings.image != blank %}
+                <img
+                  src="{{ block.settings.image | image_url: width: auto}}"
+                  loading="lazy"
+                  width="auto"
+                  height="auto"
+                  class="home-accessories_slider_image"
+                >
+              {% endif %}
+            </div>
+          </a>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+    </div> 
+    <div class="swiper-pagination"></div>
+  </div>
+  
+</div>
+<script>
+  
+function gamechangerScript(){ 
+  let mySwippergamechanger = new Swiper('.home-accessories_bottom_section_mobile', {
+    slidesPerView: 2,
+    spaceBetween: 0,
+    loop: true,
+    grabCursor: true,
+    autoplay: 
+    {
+      delay: 2000,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", gamechangerScript, {once: true});
+} else {
+  gamechangerScript();
+}
+
+</script>
+{% schema %}
+{
+  "name": "Accessories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Accessories",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Collection Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Accessories"
+    }
+  ]
+}
+{% endschema %}

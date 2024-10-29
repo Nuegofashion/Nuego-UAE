@@ -1,0 +1,141 @@
+{{ 'contactus.css' | asset_url | stylesheet_tag }}
+<div class="cotact_main contact-section">
+  <div class="cotact_wrap page-width">
+    <div class="register-row">
+      <div class="register-left">
+        <h3>{{ section.settings.title }}</h3>
+        <div class="address-box">
+          {% if section.settings.flag_icon1 != blank %}
+            <div class="address-left">
+              <img
+                src="{{ section.settings.flag_icon1 | image_url: width: auto}}"
+                loading="lazy"
+                width="auto"
+                height="auto"
+              >
+            </div>
+          {% endif %}
+          <div class="address-right">{{ section.settings.address1 }}</div>
+        </div>
+        <div class="address-box">
+          {% if section.settings.flag_icon2 != blank %}
+            <div class="address-left">
+              <img
+                src="{{ section.settings.flag_icon2 | image_url: width: auto}}"
+                loading="lazy"
+                width="auto"
+                height="auto"
+              >
+            </div>
+          {% endif %}
+          <div class="address-right">{{ section.settings.address2 }}</div>
+        </div>
+      </div>
+      <div class="r-right">
+        <h4>{{ section.settings.text }}</h4>
+        <div class="chatboxrow">
+          <div class="chatwithus">
+            <div class="chatwithus-icon">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0879/1153/0795/files/chat-icon.svg?v=1716345252"
+                height="auto"
+                width="auto"
+              >
+            </div>
+            <h3>Chat with us</h3>
+            <p>{{ section.settings.chat_text }}</p>
+            <a href="{{ section.settings.whatsapp_number }}" class="chatbtn ng-star-inserted">Start Chat</a>
+          </div>
+          <div class="chatwithus">
+            <div class="chatwithus-icon">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0879/1153/0795/files/email.svg?v=1716345253"
+                height="auto"
+                width="auto"
+              >
+            </div>
+            <h3>Email Us</h3>
+            <p>{{ section.settings.email_text }}</p>
+            <a href="{{ section.settings.email }}" class="chatbtn ng-star-inserted">Send Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contact-banner mb30">
+  <div class="bnrsec">{{ section.settings.map1 }}</div>
+  <div class="bnrsec">{{ section.settings.map2 }}</div>
+</div>
+{% schema %}
+{
+  "name": "Contact Us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "address1",
+      "label": "Address 1"
+    },
+    {
+        "type": "image_picker",
+        "id": "flag_icon1",
+        "label": "Flag Icon 1"
+    },
+    {
+      "type": "richtext",
+      "id": "address2",
+      "label": "Address 2"
+    },
+    {
+        "type": "image_picker",
+        "id": "flag_icon2",
+        "label": "Flag Icon 2"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "chat_text",
+      "label": "Chat Text"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "Whatsapp Number"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email Address"
+    },
+    {
+      "type": "text",
+      "id": "email_text",
+      "label": "Email Text"
+    },
+    {
+      "type": "html",
+      "id": "map1",
+      "label": "Map 1"
+    },
+    {
+      "type": "html",
+      "id": "map2",
+      "label": "Map 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact"
+    }
+  ]
+}
+{% endschema %}

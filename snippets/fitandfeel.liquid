@@ -1,0 +1,34 @@
+<div class="fitandfeelempty"></div>
+<div class="main_fit_and_feel">
+  <div class="upper fit_and_feel">
+    <div class="fit_and_feel_main">
+      <div class="swiper fitmySwiper{{ product.id }} fitmySwiper">
+        <div class="swiper-wrapper">
+          {%- for image in product.metafields.custom.fit_and_feel_icon.value -%}
+            <div class="swiper-slide">
+              <div class="fit_and_feel_card">
+                <div class="fit_and_feel_media">
+                  <img
+                    width="36"
+                    height="36"
+                    src="{{ image.src | image_url }}"
+                    alt="{{ image.alt }}"
+                    loading="lazy"
+                  >
+                </div>
+                <div class="fit_and_feel_info">
+                  {%- unless product.metafields.custom.fit_and_feel_title.value[forloop.index0] == blank -%}
+                    <h3>{{ product.metafields.custom.fit_and_feel_title.value[forloop.index0] }}</h3>
+                  {% endunless %}
+                  {%- unless product.metafields.custom.fit_and_fell_text.value[forloop.index0] == blank -%}
+                    <p>{{ product.metafields.custom.fit_and_fell_text.value[forloop.index0] }}</p>
+                  {% endunless %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

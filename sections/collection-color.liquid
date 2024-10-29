@@ -1,0 +1,709 @@
+{{ 'colors-to-explore.css' | asset_url | stylesheet_tag }}
+<style>
+  .colors-to-explore-section input[type='range'] {
+    background:linear-gradient(90deg, {{ section.settings.color1_code}} 6%, {{ section.settings.color2_code}} 17%, {{ section.settings.color3_code}} 28%, {{ section.settings.color4_code}} 48%, {{ section.settings.color5_code}} 56%, {{ section.settings.color6_code}} 79%, {{ section.settings.color7_code}} 93%);
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track,
+  input[type=range]::-webkit-slider-runnable-track,
+  input[type=range]::-moz-range-track,
+  input[type=range]::-ms-fill-lower,
+  input[type=range]::-ms-fill-upper,
+  input[type=range]::-ms-track {
+    background:linear-gradient(90deg, {{ section.settings.color1_code}} 6%, {{ section.settings.color2_code}} 17%, {{ section.settings.color3_code}} 28%, {{ section.settings.color4_code}} 48%, {{ section.settings.color5_code}} 56%, {{ section.settings.color6_code}} 79%, {{ section.settings.color1_code}} 93%);
+  }
+</style>
+{% assign collection1 = section.settings.collection1 %}
+{% assign collection2 = section.settings.collection2 %}
+<div class="colors-to-explore-section" id="{{ section.id }}__colors_to_explore_8U6KnP">
+  <div class="colors-to-explore-container page-width">
+    <div class="section-header-container">
+      <div class="headings">
+        <h2 class="heading-span">{{ section.settings.title }}</h2>
+      </div>
+      <div class="filters-container">
+        <button class="filter active" data-id="0">{{ section.settings.tab1_name }}</button>
+        <button class="filter " data-id="1">{{ section.settings.tab2_name }}</button>
+      </div>
+    </div>
+    <div class="slider active" data-id="0">
+      <div class="swiper-prev">
+        <span class="icon">
+          <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.9583 10.125L11.5833 14.5L15.9583 18.875M1.375 14.5C1.375 7.25126 7.25126 1.375 14.5 1.375C21.7487 1.375 27.625 7.25126 27.625 14.5C27.625 21.7487 21.7487 27.625 14.5 27.625C7.25126 27.625 1.375 21.7487 1.375 14.5Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </div>
+      <div class="swiper-next">
+        <span class="icon">
+          <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.0417 10.125L17.4167 14.5L13.0417 18.875M27.625 14.5C27.625 7.25126 21.7487 1.375 14.5 1.375C7.25126 1.375 1.375 7.25126 1.375 14.5C1.375 21.7487 7.25126 27.625 14.5 27.625C21.7487 27.625 27.625 21.7487 27.625 14.5Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </div>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for col1_product in collections[collection1].products %}
+            {% assign variable = 0 %}
+            {% assign color_name = col1_product.metafields.custom.product_color_name | downcase %}
+            {% assign first_name = section.settings.color1_name | downcase %}
+            {% if color_name == first_name and variable < 5 %}
+              {% assign variable = variable | plus: 1 %}
+              <div class="swiper-slide">
+                <a class="no-underline" href="{{ col1_product.url }}">
+                  <div class="product-card">
+                    <div class="product-img-container">
+                      {% if col1_product.featured_image != blank %}
+                        <img
+                          src="{{ col1_product.featured_image  | image_url: width: auto }}"
+                          loading="lazy"
+                          width="auto"
+                          height="auto"
+                          class="motion-reduce product-img"
+                        >
+                      {% endif %}
+                    </div>
+                    <div class="product-info">
+                      <h3 class="product-title">
+                        {{ col1_product.title }}
+                        <span>color: {{ color_name }}</span>
+                      </h3>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div
+          class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+          bis_skin_checked="1"
+        ></div>
+      </div>
+    </div>
+    <div class="slider" data-id="1">
+      <div class="swiper-prev">
+        <span class="icon">
+          <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.9583 10.125L11.5833 14.5L15.9583 18.875M1.375 14.5C1.375 7.25126 7.25126 1.375 14.5 1.375C21.7487 1.375 27.625 7.25126 27.625 14.5C27.625 21.7487 21.7487 27.625 14.5 27.625C7.25126 27.625 1.375 21.7487 1.375 14.5Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </div>
+      <div class="swiper-next">
+        <span class="icon">
+          <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.0417 10.125L17.4167 14.5L13.0417 18.875M27.625 14.5C27.625 7.25126 21.7487 1.375 14.5 1.375C7.25126 1.375 1.375 7.25126 1.375 14.5C1.375 21.7487 7.25126 27.625 14.5 27.625C21.7487 27.625 27.625 21.7487 27.625 14.5Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </div>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for col1_product in collections[collection2].products %}
+            {% assign variable = 0 %}
+            {% assign color_name = col1_product.metafields.custom.product_color_name | downcase %}
+            {% if color_name == first_name and variable < 5 %}
+              {% assign variable = variable | plus: 1 %}
+              <div class="swiper-slide">
+                <a class="no-underline" href="{{ col1_product.url }}">
+                  <div class="product-card">
+                    <div class="product-img-container">
+                      {% if col1_product.featured_image != blank %}
+                        <img
+                          src="{{ col1_product.featured_image  | image_url: width: auto }}"
+                          loading="lazy"
+                          width="auto"
+                          height="auto"
+                          class="motion-reduce product-img"
+                        >
+                      {% endif %}
+                    </div>
+                    <div class="product-info">
+                      <h3 class="product-title">
+                        {{ col1_product.title }}
+                        <span>color: {{ color_name }}</span>
+                      </h3>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div
+          class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+          bis_skin_checked="1"
+        ></div>
+      </div>
+    </div>
+    <div class="color-spectrum-slider" bis_skin_checked="1">
+      <input
+        type="range"
+        min="10"
+        max="100"
+        step="14.285714285714286"
+        id="colorSpectrum"
+        value="10"
+        aria-label="Color Filter Slider"
+      >
+      <output id="rangeBubble" class="range-bubble shown" style="">
+        {{- section.settings.color1_name | downcase -}}
+      </output>
+    </div>
+  </div>
+</div>
+<script>
+  function colorsToExplore() {
+    const COLORS_TO_EXPLORE_ROOT = document.querySelector('.colors-to-explore-section#{{ section.id }}__colors_to_explore_8U6KnP');
+    const FIRST_COLLECTION_ID = {{ collection1.id }};
+    const SECOND_COLLECTION_ID = {{ collection2.id }};
+    const COLORS_ARRAY = ["{{ section.settings.color1_name | downcase }}","{{ section.settings.color2_name | downcase }}","{{ section.settings.color3_name | downcase }}","{{ section.settings.color4_name | downcase }}","{{ section.settings.color5_name | downcase }}","{{ section.settings.color6_name | downcase }}","{{ section.settings.color7_name | downcase }}","{{ section.settings.color6_name | downcase }}","{{ section.settings.color6_name | downcase }}","{{ section.settings.color6_name | downcase }}"];
+    const MAX_SLIDES = 5;
+    const IMAGES_TO_CACHE = [];
+    const dummyMenImgUrl = "//cdn.shopify.com/s/files/1/0753/1056/3627/files/HG13_MNNVY_0105_S123_JKY_5_result_result.webp?v=1699272078&width=360";
+    const dummyWomenImgUrl = "//cdn.shopify.com/s/files/1/0753/1056/3627/files/1.jpg?v=1699272144&width=360";
+    const dummyKidImgUrl = "//cdn.shopify.com/s/files/1/0753/1056/3627/files/UG05_BLKML_0105_S223_JKY_4_20d561cf-f7a1-4a15-8823-6b7816379b83.webp?v=1699433891&width=360";
+    const dummyAccessoriesImgUrl = "//cdn.shopify.com/s/files/1/0753/1056/3627/files/7035_BLGCH_0310_S223_JKY_6_60d206bf-0b0e-4b95-a48b-e0c08a9edf6e.webp?v=1699433932&width=360";
+    let activedummyImgUrl = dummyMenImgUrl;
+
+    // For Cleaner Data Slide
+    let SWIPERSLIDESARRAY = [];
+
+    let colorsToExploreSwipers;
+    let ACTIVESWIPER;
+
+    const FILTER_BUTTON_MEN = document.querySelector('.colors-to-explore-section [data-id="0"]');
+    const FILTER_BUTTON_WOMEN = document.querySelector('.colors-to-explore-section [data-id="1"]');
+    const RANGE_INPUT = document.getElementById('colorSpectrum');
+    const RANGE_BUBBLE = document.getElementById('rangeBubble');
+
+    const SLIDER = document.querySelectorAll('#{{ section.id }}__colors_to_explore_8U6KnP .slider');
+    
+      let SWIPER_SLIDES = document.querySelectorAll('.slider[data-id="0"] .swiper-slide');
+      
+
+    let activeDataSet = '';
+    let colors_array_index = (RANGE_INPUT.value / 10) - 1 ;
+    const PRODUCTS_COUNT = 200;
+
+    // Function to check if the browser is Mozilla Firefox
+    function isMozillaFirefox() {
+      return /Firefox/i.test(navigator.userAgent);
+    }
+
+    // Check if the browser is Mozilla Firefox
+    if (isMozillaFirefox()) {
+      document.querySelector('.colors-to-explore-section#{{ section.id }}__colors_to_explore_8U6KnP').classList.add('mozilla');
+    }
+
+        colorsToExploreSwipers = new Swiper( '#{{ section.id }}__colors_to_explore_8U6KnP .swiper' , {
+          slidesPerView: 1,
+          centeredSlides: true,
+          spaceBetween: 25,
+          breakpoints: {
+              600: {
+                slidesPerView: 4,
+                spaceBetween: 25,
+              },
+              768: {
+                slidesPerView: 4,
+                centeredSlides: false,
+                spaceBetween: 25,
+              },
+            },
+            navigation: {
+              nextEl: '#{{ section.id }}__colors_to_explore_8U6KnP .swiper-next',
+              prevEl: '#{{ section.id }}__colors_to_explore_8U6KnP .swiper-prev',
+            },
+            pagination: {
+              el: '#{{ section.id }}__colors_to_explore_8U6KnP .swiper-pagination',
+              clickable: true,
+            },
+        });
+        ACTIVESWIPER = colorsToExploreSwipers[0]
+
+    function showRangeBubble() {
+      if( !RANGE_BUBBLE.classList.contains('shown')) {
+        RANGE_BUBBLE.classList.add('shown');
+      }
+    }
+
+    function setBubblePosition(range, bubble, content) {
+      bubble.innerHTML = content;
+      let min = range.min ? range.min : 0;
+      let max = range.max ? range.max : 100;
+      let val = range.value;
+      let newVal = Number(((val - min) * 100) / (max - min));
+      let newPosition = 10 - (newVal * 0.2);
+      // bubble.style.left = newVal = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+      bubble.style.left = `calc(${newVal}% + (${newPosition}px))`;
+      showRangeBubble();
+    }
+
+    // Sets the Bubbles Position Initially
+    setBubbleOnInput();
+
+    // To Hide The Bubble Initially on page Load -> hideRangeBubble();
+
+    function setBubbleOnInput() {
+      let min = RANGE_INPUT.min;
+      let step = Math.floor(RANGE_INPUT.step);
+     
+      if(RANGE_INPUT.value <= min) {
+        setBubblePosition(RANGE_INPUT, RANGE_BUBBLE, COLORS_ARRAY[0]);
+      } else if (RANGE_INPUT.value <= (( min / 1000 ) + (step * 2))) {
+        setBubblePosition(RANGE_INPUT, RANGE_BUBBLE, COLORS_ARRAY[1]);
+      } else if (RANGE_INPUT.value <= (( min / 1000 ) + (step * 3))) {
+        setBubblePosition(RANGE_INPUT, RANGE_BUBBLE, COLORS_ARRAY[2]);
+      } else if (RANGE_INPUT.value <= (( min / 1000 ) + (step * 4))) {
+        setBubblePosition(RANGE_INPUT, RANGE_BUBBLE, COLORS_ARRAY[3]);
+      } else if (RANGE_INPUT.value <= (( min / 1000 ) + (step * 5))) {
+        setBubblePosition(RANGE_INPUT, RANGE_BUBBLE, COLORS_ARRAY[4]);
+      } else if (RANGE_INPUT.value <= (( min / 1000 ) + (step * 6))) {
+        setBubblePosition(RANGE_INPUT, RANGE_BUBBLE, COLORS_ARRAY[5]);
+      } else if (RANGE_INPUT.value <= (( min / 1000 ) + (step * 7))) {
+        setBubblePosition(RANGE_INPUT, RANGE_BUBBLE, COLORS_ARRAY[6]);
+      } else if (RANGE_INPUT.value <= (( min / 1000 ) + (step * 8))) {
+        setBubblePosition(RANGE_INPUT, RANGE_BUBBLE, COLORS_ARRAY[7]);
+      } else if (RANGE_INPUT.value <= (( min / 1000 ) + (step * 9))) {
+        setBubblePosition(RANGE_INPUT, RANGE_BUBBLE, COLORS_ARRAY[8]);
+      } else if (RANGE_INPUT.value <= (( min / 1000 ) + (step * 10))) {
+        setBubblePosition(RANGE_INPUT, RANGE_BUBBLE, COLORS_ARRAY[9]);
+      }
+    }
+
+    function handleRangeChange(e) {
+      RANGE_INPUT.setAttribute('value', e.target.value);
+      let min = e.target.min;
+      let step = Math.floor(e.target.step);
+      if(e.target.value <= min) {
+        colors_array_index = 0;
+        render( SWIPER_SLIDES, cleanObjectArray(filterDataOnColor(activeDataSet, COLORS_ARRAY[colors_array_index])));
+      } else if (e.target.value <= (( min / 1000 ) + (step * 2)) ) {
+        colors_array_index = 1;
+        render( SWIPER_SLIDES, cleanObjectArray(filterDataOnColor(activeDataSet, COLORS_ARRAY[colors_array_index])));
+      } else if (e.target.value <= (( min / 1000 ) + (step * 3))) {
+        colors_array_index = 2;
+        render( SWIPER_SLIDES, cleanObjectArray(filterDataOnColor(activeDataSet, COLORS_ARRAY[colors_array_index])));
+      } else if (e.target.value <= (( min / 1000 ) + (step * 4))) {
+        colors_array_index = 3;
+        render( SWIPER_SLIDES, cleanObjectArray(filterDataOnColor(activeDataSet, COLORS_ARRAY[colors_array_index])));
+      } else if (e.target.value <= (( min / 1000 ) + (step * 5))) {
+        colors_array_index = 4;
+        render( SWIPER_SLIDES, cleanObjectArray(filterDataOnColor(activeDataSet, COLORS_ARRAY[colors_array_index])));
+      } else if (e.target.value <= (( min / 1000 ) + (step * 6))) {
+        colors_array_index = 5;
+        render( SWIPER_SLIDES, cleanObjectArray(filterDataOnColor(activeDataSet, COLORS_ARRAY[colors_array_index])));
+      } else if (e.target.value <= (( min / 1000 ) + (step * 7))) {
+        colors_array_index = 6;
+        render( SWIPER_SLIDES, cleanObjectArray(filterDataOnColor(activeDataSet, COLORS_ARRAY[colors_array_index])));
+      } else if (e.target.value <= (( min / 1000 ) + (step * 8))) {
+        colors_array_index = 7;
+        render( SWIPER_SLIDES, cleanObjectArray(filterDataOnColor(activeDataSet, COLORS_ARRAY[colors_array_index])));
+      } else if (e.target.value <= (( min / 1000 ) + (step * 9))) {
+        colors_array_index = 8;
+        render( SWIPER_SLIDES, cleanObjectArray(filterDataOnColor(activeDataSet, COLORS_ARRAY[colors_array_index])));
+      } else if (e.target.value <= (( min / 1000 ) + (step * 10))) {
+        colors_array_index = 9;
+        render( SWIPER_SLIDES, cleanObjectArray(filterDataOnColor(activeDataSet, COLORS_ARRAY[colors_array_index])));
+      }
+      // hideRangeBubble()
+    }
+
+    function render(slides, dataArray) {
+       //console.log(dataArray);
+      // Cleans Array
+      SWIPERSLIDESARRAY.splice(0, SWIPERSLIDESARRAY.length)
+
+      dataArray.forEach((product, index) => {
+        if (index <= (MAX_SLIDES - 1)) {
+          let slide = `
+            <div class="swiper-slide">
+              <a href="${product.productURL}" class="no-underline" style="animation-delay: ${ index / 12.0 }s">
+                <div class="product-card">
+                  <div class="product-img-container">
+                    <img
+                      src="${product.imgSRC}&width=360"
+                      alt="Super Combed Cotton Rich Pique Slim Fit Jogger with Zipper Pockets - Deep Olive-1"
+                      srcset="${product.imgSRC}&width=352 352w, ${product.imgSRC}&width=360 360w"
+                      width="360" height="440" loading="lazy" class="motion-reduce product-img">
+                  </div>
+                  <div class="product-info"><h3 class="product-title">${product.titleTruncated}...${product.productColorName}</h3></div>
+                </div>
+              </a>
+            </div>
+          `
+          SWIPERSLIDESARRAY.push(slide);
+          ACTIVESWIPER.removeAllSlides();
+          ACTIVESWIPER.appendSlide(SWIPERSLIDESARRAY);
+          ACTIVESWIPER.slideTo(0);
+        }
+      })
+    }
+
+    function filterDataOnColor(data, color) {
+      let filteredArr = data.products.nodes.filter((obj) => {
+       const valueArray = obj.metafields[1].value;
+       return valueArray.toLowerCase() === color;
+      });
+      return filteredArr;
+    }
+
+    function setActiveDummyImageURL(text) {
+      if(text.toLowerCase().includes('women')) {
+        activedummyImgUrl = dummyWomenImgUrl;
+      } else if(text.toLowerCase().includes('men')) {
+        activedummyImgUrl = dummyMenImgUrl;
+      } else if(text.toLowerCase().includes('kid')) {
+        activedummyImgUrl = dummyKidImgUrl;
+      } else if(text.toLowerCase().includes('accessories')) {
+        activedummyImgUrl = dummyAccessoriesImgUrl;
+      }
+    }
+
+    function cleanObjectArray(inputArray) {
+      const cleanedArray = inputArray.map((obj) => {
+        const { title, images: { nodes }, handle } = obj;
+        let imageToSet = "";
+        let altToSet = "";
+        if (nodes.length > 5 || nodes[4] !== undefined ) {
+          imageToSet = nodes[4] !== undefined ? nodes[4].src : activedummyImgUrl;
+          altToSet = nodes[4] !== undefined ? nodes[4].altText : 'Product Images';
+        } else {
+          imageToSet = nodes[0] !== undefined ? nodes[0].src : activedummyImgUrl;
+          altToSet = nodes[0] !== undefined ? nodes[0].altText : 'Product Images';
+        }
+
+        const imgSRC = imageToSet;
+        const alt = altToSet;
+        const titleTruncated = title.substring(0, 38);
+        const productURL = window.location.origin + '/products/' + handle;
+        const productColorName = obj.metafields[1] == null ? "" : ` - Color: ${obj.metafields[1].value.replace(/\b\w/g, (match) => match.toUpperCase()) }`;
+        return { titleTruncated, productURL, imgSRC, alt, productColorName };
+      });
+      return cleanedArray;
+    }
+
+    function menButtonHandler(e) {
+      // Handles Classes for Buttons
+      e.target.classList.add('active');
+      setActiveDummyImageURL(e.target.innerText)
+
+      FILTER_BUTTON_WOMEN.classList.remove('active');
+
+      // Shows Active Slider
+      SLIDER.forEach( slider => {
+        if (slider.getAttribute('data-id') === e.target.getAttribute('data-id')) {
+          slider.classList.add('active');
+        } else {
+          slider.classList.remove('active');
+        }
+      });
+
+      // Changes The SLIDE Refrence for Filtering Products
+      SWIPER_SLIDES = document.querySelectorAll('.slider[data-id="0"] .swiper-slide');
+      // Conditional Switching of data Set Based On Active Tab
+      
+        activeDataSet = collectionData1;
+        ACTIVESWIPER = colorsToExploreSwipers[0]
+        
+
+      render( SWIPER_SLIDES, cleanObjectArray(filterDataOnColor(activeDataSet, COLORS_ARRAY[colors_array_index])));
+
+      // Slides to Index 0 for Animation
+      ACTIVESWIPER.slideTo(0);
+    }
+
+    function womenButtonHandler(e) {
+      // Handles Classes for Buttons
+      e.target.classList.add('active');
+      setActiveDummyImageURL(e.target.innerText)
+
+      FILTER_BUTTON_MEN.classList.remove('active');
+
+      // Shows Active Slider
+      SLIDER.forEach( slider => {
+        if (slider.getAttribute('data-id') === e.target.getAttribute('data-id')) {
+          slider.classList.add('active');
+        } else {
+          slider.classList.remove('active');
+        }
+      });
+
+      // Changes The SLIDE Refrence for Filtering Products
+      SWIPER_SLIDES = document.querySelectorAll('.slider[data-id="1"] .swiper-slide');
+      // Conditional Switching of data Set Based On Active Tab
+      
+        activeDataSet = collectionData2;
+        ACTIVESWIPER = colorsToExploreSwipers[1]
+        
+
+      // Changes The SLIDE Refrence for Filtering Products
+      render( SWIPER_SLIDES, cleanObjectArray(filterDataOnColor(activeDataSet, COLORS_ARRAY[colors_array_index])));
+
+      // Slides to Index 0 for Animation
+      ACTIVESWIPER.slideTo(0);
+    }
+
+    function cacheImages(array, waitForOtherResources, timeout) {
+      if(array.length !== 0) {
+        if (!cacheImages.list) {
+          cacheImages.list = [];
+        }
+        let loaded = false;
+        let list = cacheImages.list;
+        let imgs = array.slice(0);
+        let t = timeout || 15 * 1000;
+        let timer;
+
+        if (!waitForOtherResources || document.readyState === 'complete') {
+          loadNow();
+        } else {
+          window.addEventListener('load', function () {
+            clearTimeout(timer);
+            loadNow();
+          });
+          timer = setTimeout(loadNow, t);
+        }
+
+        function loadNow() {
+          if (!loaded) {
+            loaded = true;
+            for (var i = 0; i < imgs.length; i++) {
+              var img = new Image();
+              img.onload = img.onerror = img.onabort = function () {
+                var index = list.indexOf(this);
+                if (index !== -1) {
+                  list.splice(index, 1);
+                }
+              };
+              list.push(img);
+              img.src = imgs[i];
+            }
+          }
+        }
+      }
+    }
+
+    const COLORS_TO_EXPLORE_OBSERVER = new IntersectionObserver( arrEntry => {
+      arrEntry.forEach( entry => {
+        if (entry.isIntersecting) {
+          cacheImages(IMAGES_TO_CACHE, true);
+          COLORS_TO_EXPLORE_OBSERVER.unobserve(entry.target);
+        }
+      });
+    });
+
+    let myHeaders = new Headers();
+    myHeaders.append('X-Shopify-Storefront-Access-Token', '499c8ff2b8e313fa11f07a23c020d7df');
+    myHeaders.append('Content-Type', 'application/json');
+
+    let graphql1 = JSON.stringify({
+      query: `query Collection {
+                collection(id: "gid://shopify/Collection/${FIRST_COLLECTION_ID}") {
+                  products(first: 200) {
+                    nodes {
+                      title
+                      handle
+                      images(first: 6) {
+                        nodes {
+                          src
+                          altText
+                        }
+                      }
+                      metafields(
+                        identifiers: [{key: "colour_family", namespace: "custom"}, {key: "product_color_name", namespace: "custom"}]
+                      ) {
+                        value
+                      }
+                    }
+                  }
+                }
+              }`,
+      variables: {},
+    });
+
+    let graphql2 = JSON.stringify({
+      query: `query Collection {
+                collection(id: "gid://shopify/Collection/${SECOND_COLLECTION_ID}") {
+                  products(first: 200) {
+                    nodes {
+                      title
+                      handle
+                      images(first: 6) {
+                        nodes {
+                          src
+                          altText
+                        }
+                      }
+                      metafields(
+                        identifiers: [{key: "colour_family", namespace: "custom"}, {key: "product_color_name", namespace: "custom"}]
+                      ) {
+                        value
+                      }
+                    }
+                  }
+                }
+              }`,
+      variables: {},
+    });
+ 
+    let requestOptions1 = {
+      method: 'POST',
+      headers: myHeaders,
+      body: graphql1,
+      redirect: 'follow',
+    };
+
+    fetch('https://49a611-fe.myshopify.com/api/2023-04/graphql.json', requestOptions1)
+      .then((response) => response.json())
+      .then((data) => {
+        collectionData1 = { ...data.data.collection };
+        activeDataSet = collectionData1;
+        return fetch('https://49a611-fe.myshopify.com/api/2023-04/graphql.json', {...requestOptions1, body: graphql2 })
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        collectionData2 = { ...data.data.collection };
+      })
+      .then(() => {
+        collectionData1.products.nodes.forEach( (node, index) => {
+          if(index <= 70) {
+            let nodeObj = node.images.nodes[4] !== undefined ? node.images.nodes[4] : node.images.nodes[0] !== undefined ? node.images.nodes[0] : undefined ;
+            if (nodeObj !== undefined) {
+              IMAGES_TO_CACHE.push(`${nodeObj.src}&width=360`);
+            }
+          }
+        });
+
+        collectionData2.products.nodes.forEach( (node, index) => {
+          if(index <= 70) {
+            let nodeObj = node.images.nodes[4] !== undefined ? node.images.nodes[4] : node.images.nodes[0] !== undefined ? node.images.nodes[0] : undefined ;
+            if (nodeObj !== undefined) {
+              IMAGES_TO_CACHE.push(`${nodeObj.src}&width=360`);
+            }
+          }
+        });
+
+        IMAGES_TO_CACHE.push(dummyMenImgUrl);
+        IMAGES_TO_CACHE.push(dummyWomenImgUrl);
+        COLORS_TO_EXPLORE_OBSERVER.observe(COLORS_TO_EXPLORE_ROOT);
+      })
+      .catch((error) => {
+        throw error;
+      });
+
+    RANGE_INPUT.addEventListener('change', handleRangeChange);
+    RANGE_INPUT.addEventListener('input', setBubbleOnInput);
+    RANGE_INPUT.addEventListener('mouseover', showRangeBubble);
+    FILTER_BUTTON_MEN.addEventListener('click', menButtonHandler);
+    FILTER_BUTTON_WOMEN.addEventListener('click', womenButtonHandler);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", colorsToExplore, {once: true})
+  }
+  else {
+    colorsToExplore();
+  }
+</script>
+{% schema %}
+{
+  "name": "Color Range Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "tab1_name",
+      "label": "Tab Name"
+    },
+    {
+      "type": "text",
+      "id": "tab2_name",
+      "label": "Tab Name"
+    },
+    {
+      "type": "collection",
+      "id": "collection1",
+      "label": "Collection 1"
+    },
+    {
+      "type": "collection",
+      "id": "collection2",
+      "label": "Collection 2"
+    },
+    {
+      "type": "text",
+      "id": "color1_name",
+      "label": "Color Name 1"
+    },
+    {
+      "type": "color",
+      "id": "color1_code",
+      "label": "Color Code 1"
+    },
+    {
+      "type": "text",
+      "id": "color2_name",
+      "label": "Color Name 2"
+    },
+    {
+      "type": "color",
+      "id": "color2_code",
+      "label": "Color Code 2"
+    },
+    {
+      "type": "text",
+      "id": "color3_name",
+      "label": "Color Name 3"
+    },
+    {
+      "type": "color",
+      "id": "color3_code",
+      "label": "Color Code 3"
+    },
+    {
+      "type": "text",
+      "id": "color4_name",
+      "label": "Color Name 4"
+    },
+    {
+      "type": "color",
+      "id": "color4_code",
+      "label": "Color Code 4"
+    },
+    {
+      "type": "text",
+      "id": "color5_name",
+      "label": "Color Name 5"
+    },
+    {
+      "type": "color",
+      "id": "color5_code",
+      "label": "Color Code 5"
+    },
+    {
+      "type": "text",
+      "id": "color6_name",
+      "label": "Color Name 6"
+    },
+    {
+      "type": "color",
+      "id": "color6_code",
+      "label": "Color Code 6"
+    },
+    {
+      "type": "text",
+      "id": "color7_name",
+      "label": "Color Name 7"
+    },
+    {
+      "type": "color",
+      "id": "color7_code",
+      "label": "Color Code 7"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,218 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="most-popular-main section-{{ section.id }}-padding most-popular-main-desktop-view">
+  <div class="most-popular-wrap page-width">
+    <div class="most-pop-header center">
+      <h2>{{ section.settings.title }}</h2>
+      <h4>{{ section.settings.sub_title }}</h4>
+    </div>
+    <div class="most-slider-container relative">
+      <div class="swiper-prev-gamechanger">
+        <span class="arrow-icon">
+          <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.9583 18.875L11.5833 14.5L15.9583 10.125M1.375 14.5C1.375 21.7487 7.25126 27.625 14.5 27.625C21.7487 27.625 27.625 21.7487 27.625 14.5C27.625 7.25126 21.7487 1.375 14.5 1.375C7.25126 1.375 1.375 7.25126 1.375 14.5Z" stroke="#606A78" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </div>
+      <div class="swiper-next-gamechanger">
+        <span class="arrow-icon">
+          <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.0417 13.125L20.4167 17.5L16.0417 21.875M30.625 17.5C30.625 10.2513 24.7487 4.375 17.5 4.375C10.2513 4.375 4.375 10.2513 4.375 17.5C4.375 24.7487 10.2513 30.625 17.5 30.625C24.7487 30.625 30.625 24.7487 30.625 17.5Z" stroke="#606A78" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </div>
+      <div
+        class="most-pop-col-main swiper most-slider mySwipper-gamechanger swiper-container d-flex"
+        data-slick='{"slidesToShow": {{ section.settings.slidesToShow }}, "slidesToScroll": {{ section.settings.slidesToScroll }},"infinite":{{ section.settings.infinite }},"arrows":{{ section.settings.arrow }},"dots":{{ section.settings.dots }},"autoplay":{{ section.settings.autoplay }}}'
+      >
+        <div class="swiper-wrapper">
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              <div class="most-pop-list swiper-slide">
+                {% if block.settings.url != blank %}
+                  <a href="{{ block.settings.url }}">
+                {% endif %}
+                <div class="most-pop-img">
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: auto}}"
+                      loading="lazy"
+                      width="auto"
+                      height="auto"
+                    >
+                  {% endif %}
+                </div>
+                {% if block.settings.url != blank %}
+                  </a>
+                {% endif %}
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Most Popular Collection", 
+  "class": "section mst-pop-col",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title"
+    },
+     {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "range",
+      "id": "slidesToShow",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "slidesToShow",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "slidesToScroll",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "slidesToScroll",
+      "default": 2
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "arrow",
+      "label": "Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+     {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Collection",
+      "settings": [
+        {
+         "type":      "image_picker",
+         "id":        "image",
+         "label":     "Image"
+        },
+        {
+         "type":      "url",
+         "id":        "url",
+         "label":     "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Most Popular Collection"
+    }
+  ]
+}
+{% endschema %}
+<script>
+  function gamechangerScript(){
+      let mySwippergamechanger = new Swiper(`.section-{{ section.id }}-padding .mySwipper-gamechanger`, {
+        slidesPerView: 1.5,
+        spaceBetween: 0,
+        loop: true,
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        coverflowEffect: {
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        },
+        navigation: {
+          nextEl: `.section-{{ section.id }}-padding .swiper-next-gamechanger`,
+          prevEl: `.section-{{ section.id }}-padding .swiper-prev-gamechanger`,
+        },
+        pagination: {
+          el: `.section-{{ section.id }}-padding .swiper-pagination`,
+          clickable: true,
+        },
+        breakpoints: {
+          601: {
+            slidesPerView: 2.5,
+            spaceBetween: 12,
+          },
+        },
+      });
+    }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", gamechangerScript, {once: true})
+  }
+  else {
+    gamechangerScript();
+  }
+</script>

@@ -1,0 +1,296 @@
+<div class="faq-box" id="custom-tab-1" onclick="showquestions(this)" bis_skin_checked="1" style="display: block;">
+  <div class="faq-image" bis_skin_checked="1">
+    {% if section.settings.img_faq1 != blank %}
+      <img
+        srcset="{{ section.settings.img_faq1 | image_url: width: auto }}"
+        src="{{ section.settings.img_faq1 | image_url: width: auto }}"
+        sizes="100vw"
+        alt=" banner "
+        width=""
+        height=""
+      >
+    {% endif %}
+  </div>
+  <div class="faq-text" bis_skin_checked="1">{{ section.settings.faq1_txt }}</div>
+  <div class="faq-box-hover" bis_skin_checked="1"></div>
+</div>
+<div class="question-wrapper" bis_skin_checked="1" style="display: none;">
+  {% render 'faq-search' %}
+  <p class="backfaqpage-mobile">{{ section.settings.faq1_txt }}</p>
+  {% assign faq1 = section.blocks | where: 'type', 'quote1' %}
+  {% for block in faq1 %}
+    <div data-custom-id="custom-tab-{{ forloop.index }}" class="category_container" bis_skin_checked="1">
+      <div class="question-question question" bis_skin_checked="1">
+        <p>{{ block.settings.question }}</p>
+        <div class="plusicon" bis_skin_checked="1">
+          {% render 'plusicon' %}
+        </div>
+        <div class="minusicon" bis_skin_checked="1">
+          {% render 'minusicon' %}
+        </div>
+      </div>
+      <div class="question-answer answer ques_ans" bis_skin_checked="1" style="">
+        {{ block.settings.answer }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<div class="faq-box" id="custom-tab-2" onclick="showquestions(this)" bis_skin_checked="1" style="display: block;">
+  <div class="faq-image" bis_skin_checked="1">
+    {% if section.settings.img_faq2 != blank %}
+      <img
+        srcset="{{ section.settings.img_faq2 | image_url: width: auto }}"
+        src="{{ section.settings.img_faq2 | image_url: width: auto }}"
+        sizes="100vw"
+        alt=" banner "
+        width=""
+        height=""
+      >
+    {% endif %}
+  </div>
+  <div class="faq-text" bis_skin_checked="1">{{ section.settings.faq2_txt }}</div>
+  <div class="faq-box-hover" bis_skin_checked="1"></div>
+</div>
+<div class="question-wrapper" bis_skin_checked="1" style="display: none;">
+  {% render 'faq-search' %}
+  <p class="backfaqpage-mobile">{{ section.settings.faq2_txt }}</p>
+  {% assign faq2 = section.blocks | where: 'type', 'quote2' %}
+  {% for block in faq2 %}
+    <div data-custom-id="custom-tab-{{ forloop.index }}" class="category_container" bis_skin_checked="1">
+      <div class="question-question question" bis_skin_checked="1">
+        <p>{{ block.settings.question }}</p>
+        <div class="plusicon" bis_skin_checked="1">
+          {% render 'plusicon' %}
+        </div>
+        <div class="minusicon" bis_skin_checked="1">
+          {% render 'minusicon' %}
+        </div>
+      </div>
+      <div class="question-answer answer ques_ans" bis_skin_checked="1" style="">
+        {{ block.settings.answer }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<div class="faq-box" id="custom-tab-3" onclick="showquestions(this)" bis_skin_checked="1" style="display: block;">
+  <div class="faq-image" bis_skin_checked="1">
+    {% if section.settings.img_faq3 != blank %}
+      <img
+        srcset="{{ section.settings.img_faq3 | image_url: width: auto }}"
+        src="{{ section.settings.img_faq3 | image_url: width: auto }}"
+        sizes="100vw"
+        alt=" banner "
+        width=""
+        height=""
+      >
+    {% endif %}
+  </div>
+  <div class="faq-text" bis_skin_checked="1">{{ section.settings.faq3_txt }}</div>
+  <div class="faq-box-hover" bis_skin_checked="1"></div>
+</div>
+<div class="question-wrapper" bis_skin_checked="1" style="display: none;">
+  {% render 'faq-search' %}
+  <p class="backfaqpage-mobile">{{ section.settings.faq3_txt }}</p>
+  {% assign faq3 = section.blocks | where: 'type', 'quote3' %}
+  {% for block in faq3 %}
+    <div data-custom-id="custom-tab-{{ forloop.index }}" class="category_container" bis_skin_checked="1">
+      <div class="question-question question" bis_skin_checked="1">
+        <p>{{ block.settings.question }}</p>
+        <div class="plusicon" bis_skin_checked="1">
+          {% render 'plusicon' %}
+        </div>
+        <div class="minusicon" bis_skin_checked="1">
+          {% render 'minusicon' %}
+        </div>
+      </div>
+      <div class="question-answer answer ques_ans" bis_skin_checked="1" style="">
+        {{ block.settings.answer }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<div class="faq-box" id="custom-tab-4" onclick="showquestions(this)" bis_skin_checked="1" style="display: block;">
+  <div class="faq-image" bis_skin_checked="1">
+    {% if section.settings.img_faq4 != blank %}
+      <img
+        srcset="{{ section.settings.img_faq4 | image_url: width: auto }}"
+        src="{{ section.settings.img_faq4 | image_url: width: auto }}"
+        sizes="100vw"
+        alt=" banner "
+        width=""
+        height=""
+      >
+    {% endif %}
+  </div>
+  <div class="faq-text" bis_skin_checked="1">{{ section.settings.faq4_txt }}</div>
+  <div class="faq-box-hover" bis_skin_checked="1"></div>
+</div>
+<div class="question-wrapper" bis_skin_checked="1" style="display: none;">
+  {% render 'faq-search' %}
+  <p class="backfaqpage-mobile">{{ section.settings.faq4_txt }}</p>
+  {% assign faq4 = section.blocks | where: 'type', 'quote4' %}
+  {% for block in faq4 %}
+    <div data-custom-id="custom-tab-{{ forloop.index }}" class="category_container" bis_skin_checked="1">
+      <div class="question-question question" bis_skin_checked="1">
+        <p>{{ block.settings.question }}</p>
+        <div class="plusicon" bis_skin_checked="1">
+          {% render 'plusicon' %}
+        </div>
+        <div class="minusicon" bis_skin_checked="1">
+          {% render 'minusicon' %}
+        </div>
+      </div>
+      <div class="question-answer answer ques_ans" bis_skin_checked="1" style="">
+        {{ block.settings.answer }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<div class="faq-box" id="custom-tab-5" onclick="showquestions(this)" bis_skin_checked="1" style="display: block;">
+  <div class="faq-image" bis_skin_checked="1">
+    {% if section.settings.img_faq5 != blank %}
+      <img
+        srcset="{{ section.settings.img_faq5 | image_url: width: auto }}"
+        src="{{ section.settings.img_faq5 | image_url: width: auto }}"
+        sizes="100vw"
+        alt=" banner "
+        width=""
+        height=""
+      >
+    {% endif %}
+  </div>
+  <div class="faq-text" bis_skin_checked="1">{{ section.settings.faq5_txt }}</div>
+  <div class="faq-box-hover" bis_skin_checked="1"></div>
+</div>
+<div class="question-wrapper" bis_skin_checked="1" style="display: none;">
+  {% render 'faq-search' %}
+  <p class="backfaqpage-mobile">{{ section.settings.faq5_txt }}</p>
+  {% assign faq5 = section.blocks | where: 'type', 'quote5' %}
+  {% for block in faq5 %}
+    <div data-custom-id="custom-tab-{{ forloop.index }}" class="category_container" bis_skin_checked="1">
+      <div class="question-question question" bis_skin_checked="1">
+        <p>{{ block.settings.question }}</p>
+        <div class="plusicon" bis_skin_checked="1">
+          {% render 'plusicon' %}
+        </div>
+        <div class="minusicon" bis_skin_checked="1">
+          {% render 'minusicon' %}
+        </div>
+      </div>
+      <div class="question-answer answer ques_ans" bis_skin_checked="1" style="">
+        {{ block.settings.answer }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<div class="faq-box" id="custom-tab-6" onclick="showquestions(this)" bis_skin_checked="1" style="display: block;">
+  <div class="faq-image" bis_skin_checked="1">
+    {% if section.settings.img_faq6 != blank %}
+      <img
+        srcset="{{ section.settings.img_faq6 | image_url: width: auto }}"
+        src="{{ section.settings.img_faq6 | image_url: width: auto }}"
+        sizes="100vw"
+        alt=" banner "
+        width=""
+        height=""
+      >
+    {% endif %}
+  </div>
+  <div class="faq-text" bis_skin_checked="1">{{ section.settings.faq6_txt }}</div>
+  <div class="faq-box-hover" bis_skin_checked="1"></div>
+</div>
+<div class="question-wrapper" bis_skin_checked="1" style="display: none;">
+  {% render 'faq-search' %}
+  <p class="backfaqpage-mobile">{{ section.settings.faq6_txt }}</p>
+  {% assign faq6 = section.blocks | where: 'type', 'quote6' %}
+  {% for block in faq6 %}
+    <div data-custom-id="custom-tab-{{ forloop.index }}" class="category_container" bis_skin_checked="1">
+      <div class="question-question question" bis_skin_checked="1">
+        <p>{{ block.settings.question }}</p>
+        <div class="plusicon" bis_skin_checked="1">
+          {% render 'plusicon' %}
+        </div>
+        <div class="minusicon" bis_skin_checked="1">
+          {% render 'minusicon' %}
+        </div>
+      </div>
+      <div class="question-answer answer ques_ans" bis_skin_checked="1" style="">
+        {{ block.settings.answer }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<div class="faq-box" id="custom-tab-7" onclick="showquestions(this)" bis_skin_checked="1" style="display: block;">
+  <div class="faq-image" bis_skin_checked="1">
+    {% if section.settings.img_faq7 != blank %}
+      <img
+        srcset="{{ section.settings.img_faq7 | image_url: width: auto }}"
+        src="{{ section.settings.img_faq7 | image_url: width: auto }}"
+        sizes="100vw"
+        alt=" banner "
+        width=""
+        height=""
+      >
+    {% endif %}
+  </div>
+  <div class="faq-text" bis_skin_checked="1">{{ section.settings.faq7_txt }}</div>
+  <div class="faq-box-hover" bis_skin_checked="1"></div>
+</div>
+<div class="question-wrapper" bis_skin_checked="1" style="display: none;">
+  {% render 'faq-search' %}
+  <p class="backfaqpage-mobile">{{ section.settings.faq7_txt }}</p>
+  {% assign faq7 = section.blocks | where: 'type', 'quote7' %}
+  {% for block in faq7 %}
+    <div data-custom-id="custom-tab-{{ forloop.index }}" class="category_container" bis_skin_checked="1">
+      <div class="question-question question" bis_skin_checked="1">
+        <p>{{ block.settings.question }}</p>
+        <div class="plusicon" bis_skin_checked="1">
+          {% render 'plusicon' %}
+        </div>
+        <div class="minusicon" bis_skin_checked="1">
+          {% render 'minusicon' %}
+        </div>
+      </div>
+      <div class="question-answer answer ques_ans" bis_skin_checked="1" style="">
+        {{ block.settings.answer }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<div class="faq-box" id="custom-tab-8" onclick="showquestions(this)" bis_skin_checked="1" style="display: block;">
+  <div class="faq-image" bis_skin_checked="1">
+    {% if section.settings.img_faq8 != blank %}
+      <img
+        srcset="{{ section.settings.img_faq8 | image_url: width: auto }}"
+        src="{{ section.settings.img_faq8 | image_url: width: auto }}"
+        sizes="100vw"
+        alt=" banner "
+        width=""
+        height=""
+      >
+    {% endif %}
+  </div>
+  <div class="faq-text" bis_skin_checked="1">{{ section.settings.faq8_txt }}</div>
+  <div class="faq-box-hover" bis_skin_checked="1"></div>
+</div>
+<div class="question-wrapper" bis_skin_checked="1" style="display: none;">
+  {% render 'faq-search' %}
+  <p class="backfaqpage-mobile">{{ section.settings.faq8_txt }}</p>
+  {% assign faq8 = section.blocks | where: 'type', 'quote8' %}
+  {% for block in faq8 %}
+    <div data-custom-id="custom-tab-{{ forloop.index }}" class="category_container" bis_skin_checked="1">
+      <div class="question-question question" bis_skin_checked="1">
+        <p>{{ block.settings.question }}</p>
+        <div class="plusicon" bis_skin_checked="1">
+          {% render 'plusicon' %}
+        </div>
+        <div class="minusicon" bis_skin_checked="1">
+          {% render 'minusicon' %}
+        </div>
+      </div>
+      <div class="question-answer answer ques_ans" bis_skin_checked="1" style="">
+        {{ block.settings.answer }}
+      </div>
+    </div>
+  {% endfor %}
+</div>

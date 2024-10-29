@@ -1,0 +1,465 @@
+{{ 'home-multi-touch.css' | asset_url | stylesheet_tag }}
+<style>
+  .myBtn {
+    position: absolute;
+    width: 33px;
+    height: 33px;
+  }
+  @media screen and (min-width: 750px) {
+    .first_touch_dot,
+    .second_touch_dot,
+    .third_touch_dot {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .first_touch_dot_des,
+    .second_touch_dot_des,
+    .third_touch_dot_des {
+      display: none;
+    }
+  }
+</style>
+<div class="multi_posture_main_div page-width home-multiposture">
+  <div class="multi_posture_top_content 1">
+    <div class="posture_top_content_text_main_left-content">
+      <div class="posture_top_content_text_main_left-content_inner_div">
+        <h3 class="posture_top_content_text_first">{{ section.settings.ftitle }}</h3>
+        <h3 class="posture_top_content_text_second">{{ section.settings.stitle }}</h3>
+      </div>
+      <div class="multi_posture_top_content_bottom_section home-multi-mobile">
+        {% if section.settings.sub_title != blank %}
+          {{ section.settings.sub_title }}
+        {% endif %}
+      </div>
+      <div class="posture_top_content_text_main_right-content_inner_div">
+        {% if section.settings.tab_name1 != blank %}
+          <h3 class="left-men-button multi-button-clicked">{{ section.settings.tab_name1 }}</h3>
+        {% endif %}
+        {% if section.settings.tab_name2 != blank %}
+          <h3 class="right-women-button">{{ section.settings.tab_name2 }}</h3>
+        {% endif %}
+      </div>
+    </div>
+    <div class="multi_posture_top_content_bottom_section home-multi-desktop">
+      {% if section.settings.sub_title != blank %}
+        {{ section.settings.sub_title }}
+      {% endif %}
+    </div>
+  </div>
+  <div class="multi_posture_bottom_content">
+    <div class="home-multiple-0 active">
+      {% if section.settings.tab1_mob != blank %}
+        <img
+          src="{{ section.settings.tab1_mob | image_url: width: auto}}"
+          loading="lazy"
+          width="auto"
+          height="auto"
+          class="posture_top_slider_image"
+          style="object-position:66.7649% 69.125%;"
+        >
+      {% endif %}
+      {% if section.settings.tab1_desk != blank %}
+        <img
+          src="{{ section.settings.tab1_desk | image_url: width: auto}}"
+          loading="lazy"
+          width="auto"
+          height="auto"
+          class="posture_top_slider_image_desktop"
+        >
+      {% endif %}
+      {% assign men = section.blocks | where: 'type', 'quote' %}
+      {% for block in men %}
+        <div
+          class="first_touch_dot_des myBtn"
+          style="top:{{ block.settings.desk_top }}%;left:{{ block.settings.desk_left }}%;"
+          data-collection="home_banner_{{ forloop.index }}"
+        >
+          <span class="outer_ellipse_style tooltip">{% render 'loop_svg' %}</span>
+        </div>
+        <div
+          class="first_touch_dot myBtn"
+          style="top:{{ block.settings.mob_top }}%;left:{{ block.settings.mob_left }}%;"
+          data-collection="home_banner_{{ forloop.index }}"
+        >
+          <span class="outer_ellipse_styleop">{% render 'loop_svg' %}</span>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="home-multiple-1">
+      {% if section.settings.tab2_mob != blank %}
+        <img
+          src="{{ section.settings.tab2_mob | image_url: width: auto}}"
+          loading="lazy"
+          width="auto"
+          height="auto"
+          class="posture_top_slider_image"
+          style="object-position:66.7649% 69.125%;"
+        >
+      {% endif %}
+      {% if section.settings.tab2_desk != blank %}
+        <img
+          src="{{ section.settings.tab2_desk | image_url: width: auto}}"
+          loading="lazy"
+          width="auto"
+          height="auto"
+          class="posture_top_slider_image_desktop"
+        >
+      {% endif %}
+      {% assign women = section.blocks | where: 'type', 'quote2' %}
+      {% for block in women %}
+        <div
+          class="first_touch_dot_des myBtn"
+          style="top:{{ block.settings.desk_top }}%;left:{{ block.settings.desk_left }}%;"
+          data-collection="home-banner-{{ forloop.index }}-women"
+        >
+          <span class="outer_ellipse_style tooltip">{% render 'loop_svg' %}</span>
+        </div>
+        <div
+          class="first_touch_dot myBtn"
+          style="top:{{ block.settings.mob_top }}%;left:{{ block.settings.mob_left }}%;"
+          data-collection="home-banner-{{ forloop.index }}-women"
+        >
+          <span class="outer_ellipse_styleop">{% render 'loop_svg' %}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="modal">
+    <div class="milti_touch-modal-content">
+      <span class="multi_modal_close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M14.875 14.875L5.125 5.125M14.875 5.125L5.125 14.875" stroke="#221F20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </span>
+      <p class="main_modal_div">Shop the look</p>
+      <div class="multi-touch_modal_main_container" data-id="scrollContainer">
+        {% assign men = section.blocks | where: 'type', 'quote' %}
+        {% for block in men %}
+          {% assign product_1 = block.settings.product1 %}
+          {% assign product_2 = block.settings.product2 %}
+          <div class="home-multi-posture-mobile">
+            {% if product_1 != blank %}
+              <div class="multi-touch_modal_main_div collection-card" data-collection="home_banner_{{ forloop.index }}">
+                {% render 'custom-product', card_product: product_1 %}
+              </div>
+            {% endif %}
+            {% if product_2 != blank %}
+              <div class="multi-touch_modal_main_div collection-card" data-collection="home_banner_{{ forloop.index }}">
+                {% render 'custom-product', card_product: product_2 %}
+              </div>
+            {% endif %}
+          </div>
+          <div class="home-multi-posture-desktop">
+            {% if product_1 != blank %}
+              <div class="multi-touch_modal_main_div collection-card" data-collection="home_banner_{{ forloop.index }}">
+                {% render 'custom-product', card_product: product_1 %}
+              </div>
+            {% endif %}
+            {% if product_2 != blank %}
+              <div class="multi-touch_modal_main_div collection-card" data-collection="home_banner_{{ forloop.index }}">
+                {% render 'custom-product', card_product: product_2 %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+        {% assign women = section.blocks | where: 'type', 'quote2' %}
+        {% for block in women %}
+          {% assign product_11 = block.settings.product1 %}
+          {% assign product_21 = block.settings.product2 %}
+          <div class="home-multi-posture-mobile">
+            {% if product_11 != blank %}
+              <div
+                class="multi-touch_modal_main_div collection-card"
+                data-collection="home-banner-{{ forloop.index }}-women"
+              >
+                {% render 'custom-product', card_product: product_11 %}
+              </div>
+            {% endif %}
+            {% if product_21 != blank %}
+              <div
+                class="multi-touch_modal_main_div collection-card"
+                data-collection="home-banner-{{ forloop.index }}-women"
+              >
+                {% render 'custom-product', card_product: product_21 %}
+              </div>
+            {% endif %}
+          </div>
+          <div class="home-multi-posture-desktop">
+            {% if product_11 != blank %}
+              <div
+                class="multi-touch_modal_main_div collection-card"
+                data-collection="home-banner-{{ forloop.index }}-women"
+              >
+                {% render 'custom-product', card_product: product_11 %}
+              </div>
+            {% endif %}
+            {% if product_21 != blank %}
+              <div
+                class="multi-touch_modal_main_div collection-card"
+                data-collection="home-banner-{{ forloop.index }}-women"
+              >
+                {% render 'custom-product', card_product: product_21 %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Shop By Look",
+  "settings": [
+    {
+      "type": "text",
+      "id": "ftitle",
+      "label": "First Title"
+    },
+    {
+      "type": "text",
+      "id": "stitle",
+      "label": "Second Title"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title"
+    },
+    {
+      "type": "text",
+      "id": "tab_name1",
+      "label": "Tab Name"
+    },
+    {
+      "type": "text",
+      "id": "tab_name2",
+      "label": "Tab Name"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab1_desk",
+      "label": "Tab1 Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab1_mob",
+      "label": "Tab1 Mobile Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab2_desk",
+      "label": "Tab2 Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab2_mob",
+      "label": "Tab2 Mobile Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Men",
+      "settings": [
+        {
+          "id": "product1",
+          "type": "product",
+          "label": "Product 1"
+        },
+        {
+          "id": "product2",
+          "type": "product",
+          "label": "Product 2"
+        },
+        {
+          "type": "range",
+          "id": "desk_top",
+          "label": "Desktop Position from Top",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "desk_left",
+          "label": "Desktop Position from Left",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "mob_top",
+          "label": "Mobile Position from Top",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "mob_left",
+          "label": "Mobile Position from Left",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "unit": "%",
+          "default": 0
+        }
+      ]
+    },
+    {
+      "type": "quote2",
+      "name": "Women",
+      "settings": [
+        {
+          "id": "product1",
+          "type": "product",
+          "label": "Product 1"
+        },
+        {
+          "id": "product2",
+          "type": "product",
+          "label": "Product 2"
+        },
+        {
+          "type": "range",
+          "id": "desk_top",
+          "label": "Desktop Position from Top",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "desk_left",
+          "label": "Desktop Position from Left",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "mob_top",
+          "label": "Mobile Position from Top",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "unit": "%",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "mob_left",
+          "label": "Mobile Position from Left",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "unit": "%",
+          "default": 0
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<script>
+  function multiPointTouchScript() {
+    const scrollContainer = document.querySelector('[data-id="scrollContainer"]');
+    const touchPointsArr = document.querySelectorAll('.myBtn');
+    const closeButton = document.querySelector('.multi_modal_close');
+    const mensButton = document.querySelector('.left-men-button');
+    const womensButton = document.querySelector('.right-women-button');
+    const modal = document.querySelector('.modal');
+    const hm0 = document.querySelector('.home-multiple-0');
+    const hm1 = document.querySelector('.home-multiple-1');
+
+    scrollContainer?.addEventListener("wheel", (event) => {
+      scrollContainer.scrollLeft += event.deltaY;
+    }, { passive: true });
+
+    mensButton.addEventListener('click', function () {
+      if (!hm0.classList.contains('active')) {
+        mensButton.classList.add('multi-button-clicked');
+        womensButton.classList.remove('multi-button-clicked');
+        hm1.classList.remove('active');
+        hm0.classList.add('active');
+      }
+    });
+
+    womensButton.addEventListener('click', function () {
+      if (!hm1.classList.contains('active')) {
+        mensButton.classList.remove('multi-button-clicked');
+        womensButton.classList.add('multi-button-clicked');
+        hm1.classList.add('active');
+        hm0.classList.remove('active');
+      }
+    });
+
+    function modalTogglerOusideClick(e) {
+      if (e.target == modal) {
+        closeModal();
+      }
+    }
+
+    function toggleScrolling() {
+      if ( document.body !== null && document.body.style.overflow === 'hidden') {
+        document.body.style.overflow = null;
+      } else {
+        document.body.style.overflow = "hidden";
+      }
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.height = null;
+      toggleScrolling();
+      window.removeEventListener('click', modalTogglerOusideClick);
+    }
+
+    function openModal(e) {
+      // Stops Scrolling
+      toggleScrolling();
+      // Gets Which Card to Show
+      let dataAttribute = e.currentTarget.getAttribute('data-collection');
+      // Filters Card To Show
+      document.querySelectorAll('.multi-touch_modal_main_div.collection-card').forEach((eachCard) => {
+        if (eachCard.getAttribute('data-collection') == dataAttribute) {
+          eachCard.style.maxHeight = '100%';
+          eachCard.style.display = 'block';
+
+        } else {
+          eachCard.style.display = 'none';
+
+        }
+      });
+      // Shows Modal
+      modal.classList.add('active');
+      window.addEventListener('click', modalTogglerOusideClick);
+    }
+
+    touchPointsArr.forEach( touchPoint => {
+      touchPoint.addEventListener('click', openModal)
+    })
+
+    closeButton.addEventListener('click', closeModal);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", multiPointTouchScript, {once: true})
+  }
+  else {
+    multiPointTouchScript();
+  }
+</script>

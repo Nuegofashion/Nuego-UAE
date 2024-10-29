@@ -1,0 +1,272 @@
+{{ 'home-bestseller.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'ajaxinate.min.js' | asset_url | script_tag }}
+{% if section.settings.image_shape == 'blob' %}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{%- unless section.settings.quick_add == 'none' -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+{%- endunless -%}
+
+{%- if section.settings.quick_add == 'standard' -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- if section.settings.quick_add == 'bulk' -%}
+  <script src="{{ 'quick-add-bulk.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+<style>
+  .home-bestseller.bestseller-padding {
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  @media screen and (max-width: 750px){
+    .home-bestseller.bestseller-padding{
+      margin-top: 0px;
+    }
+  }
+</style>
+{% assign col1 = section.settings.collection1 %}
+{% assign col2 = section.settings.collection2 %}
+<div class="home-bestseller bestseller-padding" id="home-bestseller-slider">
+  <div class="home-bestseller-container">
+    <div class="home-bestseller-header page-width">
+      <div class="bestseller-heading-container">
+        <div class="bestseller-main-heading">
+          {% if section.settings.title != blank %}
+            <h2>{{ section.settings.title }}</h2>
+          {% endif %}
+        </div>
+        <div class="bestseller-sub-heading">
+          {% if section.settings.sub_title != blank %}
+            <p>{{ section.settings.sub_title }}</p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="tab_bestseller">
+        <div class="active-tab-bestseller" data-filter="0" bis_skin_checked="1">
+          {% if section.settings.tab_name1 != blank %}
+            <span>{{ section.settings.tab_name1 }}</span>
+          {% endif %}
+        </div>
+        <div class="" data-filter="1" bis_skin_checked="1">
+          {% if section.settings.tab_name2 != blank %}
+            <span>{{ section.settings.tab_name2 }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <div class="bestseller-swiper-container" id="{{ section.id }}__c75f139c-4909-46f5-8d8c-4e0900cfdbab">
+        <div class="bestseller-swiper-container-outer active-bestseller page-width" data-filter="0">
+          <div class="swiper">
+            <div class="swiper-wrapper swipper-wrapper-bestseller">
+              {% for product in collections[col1].products limit: 8 %}
+                <div class="swiper-slide">
+                  {% render 'custom-product', card_product: product %}
+                </div>
+              {% endfor %}
+            </div>
+            <div
+              class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+            ></div>
+            <div class="bestseller-nav-btns page-width" bis_skin_checked="1">
+              <div
+                class="swiper-button-next navigation_btn"
+                tabindex="0"
+                role="button"
+                aria-label="Next slide"
+                aria-controls="swiper-wrapper-49d392b0e92b0a9d"
+                aria-disabled="false"
+                bis_skin_checked="1"
+              >
+                <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2.1994 12.1345C1.78663 12.4965 1.1307 12.4906 0.724524 12.1225C0.319663 11.7533 0.313068 11.1571 0.711379 10.7818L5.22673 6.67852L0.712724 2.57519H0.71141C0.508976 2.39715 0.393299 2.1522 0.39067 1.89527C0.388041 1.63956 0.499776 1.39222 0.698266 1.21058C0.898071 1.03015 1.17016 0.928577 1.45149 0.93097C1.7341 0.933359 2.00357 1.03851 2.19946 1.22253L7.4575 6.0022C7.86764 6.37622 7.86764 6.98083 7.4575 7.35485L2.1994 12.1345Z"></path>
+                </svg>
+              </div>
+              <div
+                class="swiper-button-prev navigation_btn"
+                tabindex="-1"
+                role="button"
+                aria-label="Previous slide"
+                aria-controls="swiper-wrapper-49d392b0e92b0a9d"
+                aria-disabled="true"
+                bis_skin_checked="1"
+              >
+                <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.57228 0.415497C7.03091 0.0017125 7.75973 0.00852947 8.21103 0.429154C8.66088 0.851119 8.66821 1.53256 8.22564 1.96137L3.20858 6.65089L8.22414 11.3404H8.2256C8.45053 11.5439 8.57906 11.8238 8.58198 12.1175C8.5849 12.4097 8.46075 12.6924 8.24021 12.9C8.0182 13.1062 7.71588 13.2223 7.4033 13.2195C7.08928 13.2168 6.78987 13.0966 6.57222 12.8863L0.729949 7.42383C0.274234 6.99638 0.274234 6.30539 0.729949 5.87794L6.57228 0.415497Z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bestseller-swiper-container-outer page-width" data-filter="1">
+          <div class="swiper">
+            <div class="swiper-wrapper swipper-wrapper-bestseller">
+              {% for product in collections[col2].products limit: 8 %}
+                <div class="swiper-slide">
+                  {% render 'custom-product', card_product: product %}
+                </div>
+              {% endfor %}
+            </div>
+            <div
+              class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+            ></div>
+            <div class="bestseller-nav-btns page-width">
+              <div class="swiper-button-next navigation_btn">
+                <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2.1994 12.1345C1.78663 12.4965 1.1307 12.4906 0.724524 12.1225C0.319663 11.7533 0.313068 11.1571 0.711379 10.7818L5.22673 6.67852L0.712724 2.57519H0.71141C0.508976 2.39715 0.393299 2.1522 0.39067 1.89527C0.388041 1.63956 0.499776 1.39222 0.698266 1.21058C0.898071 1.03015 1.17016 0.928577 1.45149 0.93097C1.7341 0.933359 2.00357 1.03851 2.19946 1.22253L7.4575 6.0022C7.86764 6.37622 7.86764 6.98083 7.4575 7.35485L2.1994 12.1345Z"></path>
+                </svg>
+              </div>
+              <div class="swiper-button-prev navigation_btn">
+                <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.57228 0.415497C7.03091 0.0017125 7.75973 0.00852947 8.21103 0.429154C8.66088 0.851119 8.66821 1.53256 8.22564 1.96137L3.20858 6.65089L8.22414 11.3404H8.2256C8.45053 11.5439 8.57906 11.8238 8.58198 12.1175C8.5849 12.4097 8.46075 12.6924 8.24021 12.9C8.0182 13.1062 7.71588 13.2223 7.4033 13.2195C7.08928 13.2168 6.78987 13.0966 6.57222 12.8863L0.729949 7.42383C0.274234 6.99638 0.274234 6.30539 0.729949 5.87794L6.57228 0.415497Z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Home Best Seller",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title"
+    },
+    {
+      "type": "text",
+      "id": "tab_name1",
+      "label": "Tab Name"
+    },
+    {
+      "type": "text",
+      "id": "tab_name2",
+      "label": "Tab Name"
+    },
+    {
+      "type": "collection",
+      "id": "collection1",
+      "label": "Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection2",
+      "label": "collection2"
+    },
+    {
+      "type": "select",
+      "id": "quick_add",
+      "default": "none",
+      "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
+      "info": "t:sections.main-collection-product-grid.settings.quick_add.info",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_1"
+        },
+        {
+          "value": "standard",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
+        },
+        {
+          "value": "bulk",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<script>
+  function bestsellerScript() {
+  const bestsellerTabtemplate21552949068075c75f139c490946f58d8c4e0900cfdbab = document.querySelectorAll('.tab_bestseller div');
+  const bestSellerSwiperstemplate21552949068075c75f139c490946f58d8c4e0900cfdbab = [];
+  const swiperstemplate21552949068075c75f139c490946f58d8c4e0900cfdbab = document.querySelectorAll('#{{ section.id }}__c75f139c-4909-46f5-8d8c-4e0900cfdbab [data-filter] .swiper');
+
+      swiperstemplate21552949068075c75f139c490946f58d8c4e0900cfdbab.forEach( swiper => {
+        let bestSellerSwiper = new Swiper( swiper, {
+             slidesPerView: 1.95,
+              spaceBetween: 5,
+              centeredSlides: false,
+              allowTouchMove: true,
+              grabCursor: true,
+              loop:true,
+              breakpoints: {
+                601: {
+                  slidesPerView: 4,
+                  spaceBetween: 5,
+                  centeredSlides: false,
+                },
+                1400: {
+                  slidesPerView: 4,
+                  spaceBetween: 5,
+                  centeredSlides: false,
+                },
+              },
+          navigation: {
+            nextEl: `#{{ section.id }}__c75f139c-4909-46f5-8d8c-4e0900cfdbab .swiper-button-next`,
+            prevEl: `#{{ section.id }}__c75f139c-4909-46f5-8d8c-4e0900cfdbab .swiper-button-prev`,
+          },
+          pagination: {
+            el: `#{{ section.id }}__c75f139c-4909-46f5-8d8c-4e0900cfdbab .swiper-pagination`,
+            clickable: true,
+          },
+        });
+        bestSellerSwiperstemplate21552949068075c75f139c490946f58d8c4e0900cfdbab.push(bestSellerSwiper);
+      })
+
+  bestsellerTabtemplate21552949068075c75f139c490946f58d8c4e0900cfdbab.forEach((tabBest) => {
+    tabBest.addEventListener('click', (event) => {
+      const collectionNumb = event.currentTarget.getAttribute('data-filter');
+
+      if(!event.currentTarget.classList.contains("active-tab-bestseller")) {
+        bestSellerSwiperstemplate21552949068075c75f139c490946f58d8c4e0900cfdbab[collectionNumb].slideTo(0);
+      }
+
+      bestsellerTabtemplate21552949068075c75f139c490946f58d8c4e0900cfdbab.forEach((tabBest) => {
+        tabBest.classList.remove('active-tab-bestseller');
+      });
+      showBestsellerContent(collectionNumb);
+      tabBest.classList.add('active-tab-bestseller');
+    });
+  });
+
+  function showBestsellerContent(collectionNumb) {
+    const bestCollectionContent = document.querySelectorAll('.home-bestseller .bestseller-swiper-container-outer');
+    bestCollectionContent.forEach((contentBest) => {
+      if (contentBest.getAttribute('data-filter') === collectionNumb) {
+        contentBest.classList.add('active-bestseller');
+      } else {
+        contentBest.classList.remove('active-bestseller');
+      }
+    });
+  }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bestsellerScript, {once: true})
+  }
+  else {
+    bestsellerScript();
+  }
+</script>

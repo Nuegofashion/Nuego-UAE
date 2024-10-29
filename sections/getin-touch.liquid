@@ -1,0 +1,294 @@
+{{ 'getintouch.css' | asset_url | stylesheet_tag }}
+<style>
+  .col-lg-6.col-md-6.border-left {
+  border-color: lightgray;
+  }
+</style>
+<div class="get-in-touch-wrapper">
+  <div class="get-in-touch-hrading">
+    {% if section.settings.title != blank %}
+      <h1>{{ section.settings.title }}</h1>
+    {% endif %}
+  </div>
+  <div class="get-in-content">
+    {% assign quote1 = section.blocks | where: 'type', 'quote1' %}
+    {% for block in quote1 %}
+      <table height="auto" width="528">
+        <tbody>
+          <tr>
+            <td data-sanitized-data-mce-style="width: 100%;" data-mce-style="width: 100%;" style="width: 100%;">
+              <h4>{{ block.settings.title }}</h4>
+              <div class="contactAddress" bis_skin_checked="1">
+                <img
+                  height="auto"
+                  width="30px"
+                  alt=""
+                  src="https://cdn.shopify.com/s/files/1/0703/7793/0993/files/location-icon-footer-2023_480x480_d7d910e7-6ef2-4bae-90b5-8bd218dc7fc2.webp?v=1722490015"
+                >
+                {{ block.settings.address }}
+              </div>
+              <div
+                data-sanitized-data-mce-style="padding-left: 30px;"
+                data-mce-style="padding-left: 30px;"
+                style="padding-left: 30px;"
+                class="contactAddress"
+                bis_skin_checked="1"
+              >
+                {{ block.settings.cin }}
+              </div>
+              <div class="clearfix" bis_skin_checked="1"></div>
+              <div class="contactEmail" bis_skin_checked="1">
+                <img
+                  height="auto"
+                  width="30px"
+                  alt=""
+                  src="https://cdn.shopify.com/s/files/1/0703/7793/0993/files/email-icon-footer-2023_480x480_f3f46695-a3c3-40c5-9c7c-9a6efdf845cb.webp?v=1722490015"
+
+                ><a
+                  data-sanitized-data-mce-href="mailto:{{ block.settings.email }}"
+                  data-mce-href="mailto:{{ block.settings.email }}"
+                  href="mailto:{{ block.settings.email }}"
+                >
+                  {{- block.settings.email -}}
+                </a>
+              </div>
+              <div class="clearfix" bis_skin_checked="1"></div>
+              <div class="contactMobile" bis_skin_checked="1">
+                <img
+                  height="auto"
+                  width="30px"
+                  alt=""
+                  src="https://cdn.shopify.com/s/files/1/0703/7793/0993/files/mobile-icon-footer-2023_480x480_7e4fc282-05bf-45fa-9910-e50cd70621de.webp?v=1722490016"
+
+                ><span>{{ block.settings.phn_days }}</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    {% endfor %}
+    <table height="auto" width="528">
+      <tbody>
+        <tr>
+          <td>
+            <h4></h4>
+            <div class="col-12 padding-0" bis_skin_checked="1"></div>
+            <div class="clearfix" bis_skin_checked="1"></div>
+            <div class="row" bis_skin_checked="1">
+              {% assign quote3 = section.blocks | where: 'type', 'quote3' %}
+              {% for block in quote3 %}
+                <div
+                  class="col-lg-6 col-md-6 {% if forloop.last == true %} border-left {% endif %}"
+                  bis_skin_checked="1"
+                >
+                  <h4 class="margin-0">
+                    <span dir="ltr">{{ block.settings.title }}</span>
+                  </h4>
+                  <div class="col-12 padding-0" bis_skin_checked="1">
+                    <div class="contactEmail" bis_skin_checked="1">
+                      <img
+                        height="auto"
+                        width="30px"
+                        alt=""
+                        src="https://cdn.shopify.com/s/files/1/0703/7793/0993/files/email-icon-footer-2023_480x480_f3f46695-a3c3-40c5-9c7c-9a6efdf845cb.webp?v=1722490015"
+                        style="width: 30px; height: auto;"
+
+                      ><a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
+                    </div>
+                    <div class="contactEmail" bis_skin_checked="1">
+                      <img
+                        height="auto"
+                        width="30px"
+                        alt=""
+                        src="https://cdn.shopify.com/s/files/1/0703/7793/0993/files/mobile-icon-footer-2023_480x480_7e4fc282-05bf-45fa-9910-e50cd70621de.webp?v=1722490016"
+                        style="width: 30px; height: auto;"
+
+                      ><span>{{ block.settings.phn_no }}</span>
+                    </div>
+                    <div class="contactEmail" bis_skin_checked="1">
+                      <span>{{ block.settings.phn_no_days }}</span>
+                    </div>
+                    <div class="clearfix" bis_skin_checked="1"></div>
+                    <div class="col-12 frachiseEnquiry" bis_skin_checked="1">
+                      <a href="{{ block.settings.btnlink }}">{{ block.settings.btnnm }}</a>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    {% assign quote2 = section.blocks | where: 'type', 'quote2' %}
+    {% for block in quote2 %}
+      <table height="auto" width="528">
+        <tbody>
+          <tr>
+            <td>
+              <h4>{{ block.settings.title }}</h4>
+              <p>&nbsp;</p>
+              <div class="col-12 padding-0" bis_skin_checked="1">
+                <h4 class="margin-0">{{ block.settings.name }}</h4>
+                <div class="contactAddress" bis_skin_checked="1">
+                  <img
+                    height="auto"
+                    width="30px"
+                    alt=""
+                    src="https://cdn.shopify.com/s/files/1/0703/7793/0993/files/location-icon-footer-2023_480x480_d7d910e7-6ef2-4bae-90b5-8bd218dc7fc2.webp?v=1722490015"
+                  >
+                  {{- block.settings.address }}
+                </div>
+                <div
+                  data-sanitized-data-mce-style="padding-left: 30px;"
+                  data-mce-style="padding-left: 30px;"
+                  class="contactAddress"
+                  style="padding-left: 30px;"
+                  bis_skin_checked="1"
+                ></div>
+                <div class="contactEmail" bis_skin_checked="1">
+                  <img
+                    height="auto"
+                    width="30px"
+                    alt=""
+                    src="https://cdn.shopify.com/s/files/1/0703/7793/0993/files/email-icon-footer-2023_480x480_f3f46695-a3c3-40c5-9c7c-9a6efdf845cb.webp?v=1722490015"
+
+                  ><a
+                    data-sanitized-data-mce-href="mailto:{{ block.settings.email }}"
+                    data-mce-href="mailto:{{ block.settings.email }}"
+                    href="mailto:{{ block.settings.email }}"
+                  >
+                    {{- block.settings.email -}}
+                  </a>
+                </div>
+                <div class="clearfix" bis_skin_checked="1"></div>
+                <div class="contactMobile" bis_skin_checked="1">
+                  <img
+                    height="auto"
+                    width="30px"
+                    alt=""
+                    src="https://cdn.shopify.com/s/files/1/0703/7793/0993/files/mobile-icon-footer-2023_480x480_7e4fc282-05bf-45fa-9910-e50cd70621de.webp?v=1722490016"
+                  >
+                  {{- block.settings.phn_days }}
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Get In Touch",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote1",
+      "name": "Top Column Address",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "address",
+          "label": "Address"
+        },
+        {
+          "type": "text",
+          "id": "cin",
+          "label": "CIN"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email Address"
+        },
+        {
+          "type": "text",
+          "id": "phn_days",
+          "label": "Phone with Working Days"
+        }
+      ]
+    },
+    {
+      "type": "quote2",
+      "name": "Bottom Right Address",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "address",
+          "label": "Address"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email Address"
+        },
+        {
+          "type": "text",
+          "id": "phn_days",
+          "label": "Phone with Working Days"
+        }
+      ]
+    },
+    {
+      "type": "quote3",
+      "name": "Bottom Left Address",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email Address"
+        },
+        {
+          "type": "text",
+          "id": "phn_no",
+          "label": "Phone"
+        },
+        {
+          "type": "text",
+          "id": "phn_no_days",
+          "label": "Phone With Days"
+        },
+        {
+          "type": "text",
+          "id": "btnnm",
+          "label": "Button Name"
+        },
+        {
+          "type": "url",
+          "id": "btnlink",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

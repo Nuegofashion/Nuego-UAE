@@ -1,0 +1,191 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
+{{ 'custom-blogs-page-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'jockey_journal.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div
+  class="jockey_journal_new padding_top section-{{ section.id }}-padding"
+  id="template--{{ section.id }}__jockey_journal_GHEfY7"
+>
+  <div class="jockey_journal_new_start">
+    <div class="tag_container_new center  page-width">
+      <div class="title">{{ section.settings.title }}</div>
+    </div>
+    <div class="article_container page-width">
+      <div class="swiper myjockeyjournalswiper article active_article_new">
+        <div class="swiper-wrapper">
+          {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
+            {%- for article in section.settings.blog.articles -%}
+              <div class="swiper-slide blog-articles__article an-blogs-page-article">
+                {% render 'article-card',
+                  blog: section.settings.blog,
+                  article: article,
+                  media_aspect_ratio: 1.66,
+                  show_image: section.settings.show_image,
+                  show_date: section.settings.show_date,
+                  show_author: section.settings.show_author,
+                  show_excerpt: false
+                %}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="navigation_pagination_btns page-width">
+          <div
+            class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+          ></div>
+          <div class="naviagtion_btns padding-right-val" bis_skin_checked="1">
+            <div
+              class="swiper-button-next"
+              tabindex="0"
+              role="button"
+              aria-label="Next slide"
+              aria-controls="swiper-wrapper-5e22b31eb03a174a"
+              aria-disabled="false"
+              bis_skin_checked="1"
+            >
+              <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.1994 12.1345C1.78663 12.4965 1.1307 12.4906 0.724524 12.1225C0.319663 11.7533 0.313068 11.1571 0.711379 10.7818L5.22673 6.67852L0.712724 2.57519H0.71141C0.508976 2.39715 0.393299 2.1522 0.39067 1.89527C0.388041 1.63956 0.499776 1.39222 0.698266 1.21058C0.898071 1.03015 1.17016 0.928577 1.45149 0.93097C1.7341 0.933359 2.00357 1.03851 2.19946 1.22253L7.4575 6.0022C7.86764 6.37622 7.86764 6.98083 7.4575 7.35485L2.1994 12.1345Z"></path>
+              </svg>
+            </div>
+            <div
+              class="swiper-button-prev"
+              tabindex="0"
+              role="button"
+              aria-label="Previous slide"
+              aria-controls="swiper-wrapper-5e22b31eb03a174a"
+              aria-disabled="false"
+              bis_skin_checked="1"
+            >
+              <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.57228 0.415497C7.03091 0.0017125 7.75973 0.00852947 8.21103 0.429154C8.66088 0.851119 8.66821 1.53256 8.22564 1.96137L3.20858 6.65089L8.22414 11.3404H8.2256C8.45053 11.5439 8.57906 11.8238 8.58198 12.1175C8.5849 12.4097 8.46075 12.6924 8.24021 12.9C8.0182 13.1062 7.71588 13.2223 7.4033 13.2195C7.08928 13.2168 6.78987 13.0966 6.57222 12.8863L0.729949 7.42383C0.274234 6.99638 0.274234 6.30539 0.729949 5.87794L6.57228 0.415497Z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Blog Slider",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "t:sections.featured-blog.settings.blog.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_image.label",
+      "info": "t:sections.featured-blog.settings.show_image.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.featured-blog.settings.show_author.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Slider"
+    }
+  ]
+}
+{% endschema %}
+<script>
+  function jockeyJournalScript() {
+      let myjockeyjournalswipertemplate22211986915627jockey_journal_GHEfY7 = new Swiper('#template--{{ section.id }}__jockey_journal_GHEfY7 .myjockeyjournalswiper', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        slidesOffsetAfter: 30,
+        loop: true,
+        pagination: {
+          el: '#template--{{ section.id }}__jockey_journal_GHEfY7 .swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '#template--{{ section.id }}__jockey_journal_GHEfY7.jockey_journal_new .swiper-button-next',
+          prevEl: '#template--{{ section.id }}__jockey_journal_GHEfY7.jockey_journal_new .swiper-button-prev',
+        },
+        breakpoints: {
+          300: {
+            slidesPerView: 1.2,
+            spaceBetween: 10,
+          },
+          600:{
+            slidesPerView: 2.2,
+            spaceBetween: 20,
+          },
+          999: {
+            slidesPerView: 2.6,
+            spaceBetween: 39,
+          },
+          1249: {
+            slidesPerView: 3.35,
+            spaceBetween: 39,
+          }
+        },
+      });
+    }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", jockeyJournalScript, {once: true})
+  }
+  else {
+    jockeyJournalScript();
+  }
+</script>

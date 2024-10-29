@@ -1,0 +1,374 @@
+{{ 'home-new-arrivals.css' | asset_url | stylesheet_tag }}
+<style data-shopify="">
+  .new-arrivals-section#template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845 {
+    background: linear-gradient(167deg, rgba(36, 43, 60, 1), rgba(122, 126, 137, 1) 49.48%, rgba(22, 28, 42, 1) 100%);
+    margin-top: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  @media only screen and (max-width: 600px) {
+    .new-arrivals-section#template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845 {
+      background: linear-gradient(167deg, rgba(36, 43, 60, 1), rgba(122, 126, 137, 1) 49.48%, rgba(22, 28, 42, 1) 100%);
+      margin-top: 20px;
+    }
+  }
+</style>
+<div class="new-arrivals-section" id="template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845">
+  <div class="new-arrivals-container page-width">
+    <div class="section-header-container">
+      <div class="headings">
+        {% if section.settings.title != blank %}
+          <h2 class="heading">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.sub_title != blank %}
+          <h2 class="heading-span mobile">{{ section.settings.sub_title }}</h2>
+        {% endif %}
+      </div>
+      <div class="filters-container">
+        {% if section.settings.tab_name1 != blank %}
+          <button class="filter active" data-id="filterButton1">{{ section.settings.tab_name1 }}</button>
+        {% endif %}
+        {% if section.settings.tab_name2 != blank %}
+          <button class="filter" data-id="filterButton2">{{ section.settings.tab_name2 }}</button>
+        {% endif %}
+      </div>
+    </div>
+    {% if section.settings.sub_title != blank %}
+      <h2 class="heading-span desktop">{{ section.settings.sub_title }}</h2>
+    {% endif %}
+    <div class="slider">
+      <div class="cards-before">
+        <div class="before" bis_skin_checked="1"></div>
+        <div class="after" bis_skin_checked="1"></div>
+      </div>
+      <div class="swiper-container-gendered shown" data-tag="men">
+        <div
+          class="swiper-prev"
+          tabindex="0"
+          role="button"
+          aria-label="Previous slide"
+          aria-controls="swiper-wrapper-41036fcf73cbecf25"
+          bis_skin_checked="1"
+        >
+          <span class="icon">
+            <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.9583 10.125L11.5833 14.5L15.9583 18.875M1.375 14.5C1.375 7.25126 7.25126 1.375 14.5 1.375C21.7487 1.375 27.625 7.25126 27.625 14.5C27.625 21.7487 21.7487 27.625 14.5 27.625C7.25126 27.625 1.375 21.7487 1.375 14.5Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="swiper-next"
+          tabindex="0"
+          role="button"
+          aria-label="Next slide"
+          aria-controls="swiper-wrapper-41036fcf73cbecf25"
+          bis_skin_checked="1"
+        >
+          <span class="icon">
+            <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.0417 10.125L17.4167 14.5L13.0417 18.875M27.625 14.5C27.625 7.25126 21.7487 1.375 14.5 1.375C7.25126 1.375 1.375 7.25126 1.375 14.5C1.375 21.7487 7.25126 27.625 14.5 27.625C21.7487 27.625 27.625 21.7487 27.625 14.5Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+        </div>
+        <div class="swiper mySwiper" data-tag="men">
+          <div class="swiper-wrapper">
+            {% assign men = section.blocks | where: 'type', 'quote' %}
+            {% for block in men %}
+              <div class="swiper-slide" data-tag=" men">
+                <div class="product-card" bis_skin_checked="1">
+                  <a
+                    href="{{ block.settings.btnlink }}"
+                    class="no-underline"
+                  >
+                    <div class="product-img-container" bis_skin_checked="1">
+                      {% if block.settings.image != blank %}
+                        <img
+                          src="{{ block.settings.image | image_url: width: auto}}"
+                          loading="lazy"
+                          width="auto"
+                          height="auto"
+                          class="motion-reduce product-img"
+                        >
+                      {% endif %}
+                    </div>
+                    <div class="product-info" bis_skin_checked="1">
+                      <h3 class="product-title">{{ block.settings.title }}</h3>
+                      <div class="product-details" bis_skin_checked="1">
+                        <h4 class="product-style-number h5">{{ block.settings.style_no }}</h4>
+                        <p class="product-button h5 no-underline" aria-label="Explore More">
+                          {{ section.settings.btnnm }}
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div
+            class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+          ></div>
+        </div>
+      </div>
+      <div class="swiper-container-gendered" data-tag="women">
+        <div
+          class="swiper-prev"
+          tabindex="0"
+          role="button"
+          aria-label="Previous slide"
+          aria-controls="swiper-wrapper-2edb2a8a743f9ecd"
+          bis_skin_checked="1"
+        >
+          <span class="icon">
+            <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.9583 10.125L11.5833 14.5L15.9583 18.875M1.375 14.5C1.375 7.25126 7.25126 1.375 14.5 1.375C21.7487 1.375 27.625 7.25126 27.625 14.5C27.625 21.7487 21.7487 27.625 14.5 27.625C7.25126 27.625 1.375 21.7487 1.375 14.5Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="swiper-next"
+          tabindex="0"
+          role="button"
+          aria-label="Next slide"
+          aria-controls="swiper-wrapper-2edb2a8a743f9ecd"
+          bis_skin_checked="1"
+        >
+          <span class="icon">
+            <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.0417 10.125L17.4167 14.5L13.0417 18.875M27.625 14.5C27.625 7.25126 21.7487 1.375 14.5 1.375C7.25126 1.375 1.375 7.25126 1.375 14.5C1.375 21.7487 7.25126 27.625 14.5 27.625C21.7487 27.625 27.625 21.7487 27.625 14.5Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+        </div>
+        <div class="swiper mySwiper" data-tag="women">
+          <div class="swiper-wrapper">
+            {% assign women = section.blocks | where: 'type', 'quote2' %}
+            {% for block in women %}
+              <div class="swiper-slide" data-tag=" women">
+                <div class="product-card" bis_skin_checked="1">
+                  <a
+                    href="{{ block.settings.btnlink }}"
+                    class="no-underline"
+                  >
+                    <div class="product-img-container" bis_skin_checked="1">
+                      {% if block.settings.image != blank %}
+                        <img
+                          src="{{ block.settings.image | image_url: width: auto}}"
+                          loading="lazy"
+                          width="auto"
+                          height="auto"
+                          class="motion-reduce product-img"
+                        >
+                      {% endif %}
+                    </div>
+                    <div class="product-info" bis_skin_checked="1">
+                      <h3 class="product-title">{{ block.settings.title }}</h3>
+                      <div class="product-details" bis_skin_checked="1">
+                        <h4 class="product-style-number h5">{{ block.settings.style_no }}</h4>
+                        <p class="product-button h5 no-underline">{{ section.settings.btnnm }}</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div
+            class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+          ></div>
+        </div>
+      </div>
+      <div class="cards-after" bis_skin_checked="1">
+        <div class="before" bis_skin_checked="1"></div>
+        <div class="after" bis_skin_checked="1"></div>
+      </div>
+    </div>
+    <div class="swipe-to-explore-more" bis_skin_checked="1">
+      <div class="icon" bis_skin_checked="1">
+        <svg width="32" height="31" viewBox="0 0 32 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path id="Vector" d="M28.5811 14.3199C27.6812 14.3199 26.8731 14.7163 26.3197 15.3436C25.7666 14.7163 24.9585 14.3199 24.0586 14.3199C23.4374 14.3199 22.8617 14.5084 22.3822 14.831C21.9692 13.6567 20.8491 12.8123 19.5362 12.8123C18.9876 12.8123 18.4721 12.96 18.0289 13.2179L18.0286 4.52091C18.0286 2.85816 16.6763 1.50586 15.0136 1.50586C13.3508 1.50586 11.9985 2.85816 11.9985 4.52091V17.3272L8.10017 14.3787C6.96054 13.239 4.97368 13.2375 3.83694 14.3787C2.66103 15.553 2.66103 17.4675 3.82195 18.6269L14.4666 29.9102C14.6083 30.0621 14.8057 30.1481 15.0136 30.1481H27.8273C28.1725 30.1481 28.474 29.9128 28.5584 29.5768L31.5734 17.5169C31.5887 17.458 31.5963 17.3963 31.5963 17.3345C31.5963 15.6717 30.244 14.3194 28.5812 14.3194L28.5811 14.3199ZM27.238 28.6411H15.3383L4.90227 17.5778C4.31446 16.9885 4.31446 16.0326 4.90227 15.4448C5.47352 14.8765 6.38863 14.8102 7.11074 15.5126L12.2951 19.4427C12.5227 19.616 12.8272 19.6417 13.0867 19.5182C13.3453 19.3899 13.5067 19.1275 13.5067 18.8426V4.52143C13.5067 3.68942 14.1837 3.01408 15.0141 3.01408C15.8448 3.01408 16.5215 3.68942 16.5215 4.52143L16.5217 15.8276C16.5217 16.2437 16.8595 16.5813 17.2754 16.5813C17.6915 16.5813 18.0291 16.2437 18.0291 15.8276C18.0291 14.9956 18.706 14.3202 19.5364 14.3202C20.3672 14.3202 21.0438 14.9956 21.0438 15.8276V17.335C21.0438 17.7511 21.3816 18.0886 21.7975 18.0886C22.2139 18.0889 22.5514 17.7511 22.5514 17.3352C22.5514 16.5032 23.2284 15.8279 24.0588 15.8279C24.8895 15.8279 25.5661 16.5032 25.5661 17.3352C25.5661 17.7514 25.9039 18.0889 26.3198 18.0889C26.7362 18.0889 27.074 17.7511 27.074 17.3352C27.074 16.5032 27.751 15.8279 28.5814 15.8279C29.3848 15.8279 30.0436 16.4596 30.0874 17.2509L27.238 28.6411Z" fill="white"></path>
+          <path id="Vector_2" d="M21.0427 4.52116H26.7608L25.0331 6.24885C24.7392 6.54276 24.7392 7.0207 25.0331 7.31459C25.1792 7.46233 25.3722 7.53621 25.5652 7.53621C25.7581 7.53621 25.9511 7.46233 26.0988 7.31617L29.1139 4.30274C29.1833 4.23176 29.239 4.14738 29.2766 4.05695C29.3534 3.87162 29.3534 3.66499 29.2766 3.47965C29.239 3.38764 29.183 3.30483 29.1139 3.23386L26.0988 0.22043C25.8049 -0.0734766 25.327 -0.0734766 25.0331 0.22043C24.7392 0.514336 24.7392 0.992278 25.0331 1.28617L26.7608 3.01386H21.0427C20.6266 3.01386 20.2891 3.35167 20.2891 3.76754C20.2891 4.18369 20.6266 4.52116 21.0427 4.52116Z" fill="white"></path>
+          <path id="Vector_3" d="M8.29319 4.52116H2.57516L4.30285 6.24885C4.59676 6.54276 4.59676 7.0207 4.30285 7.31459C4.15669 7.46233 3.96373 7.53621 3.77078 7.53621C3.57782 7.53621 3.38486 7.46233 3.23712 7.31617L0.222075 4.30274C0.152677 4.23176 0.0969383 4.14738 0.0593453 4.05695C-0.0174155 3.87162 -0.0174155 3.66499 0.0593453 3.47965C0.0969376 3.38764 0.152933 3.30483 0.222075 3.23386L3.23712 0.22043C3.53103 -0.0734766 4.00897 -0.0734766 4.30286 0.22043C4.59677 0.514336 4.59677 0.992278 4.30286 1.28617L2.57517 3.01386H8.2932C8.70935 3.01386 9.04688 3.35167 9.04688 3.76754C9.04688 4.18369 8.70933 4.52116 8.29319 4.52116Z" fill="white"></path>
+        </svg>
+      </div>
+      <h5 class="heading">Swipe to Explore More</h5>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Home New Arrived",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title"
+    },
+    {
+      "type": "text",
+      "id": "tab_name1",
+      "label": "Tab Name"
+    },
+    {
+      "type": "text",
+      "id": "tab_name2",
+      "label": "Tab Name"
+    },
+    {
+      "type": "text",
+      "id": "btnnm",
+      "label": "Button Name"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Men",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "style_no",
+          "label": "Style No"
+        },
+        {
+          "type": "url",
+          "id": "btnlink",
+          "label": "Button Link"
+        }
+      ]
+    },
+    {
+      "type": "quote2",
+      "name": "Women",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "style_no",
+          "label": "Style No"
+        },
+        {
+          "type": "url",
+          "id": "btnlink",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<script>
+  function newArrivalsScript(){
+  const FILTER_BUTTON_MENtemplate21552949068075461daf8a76a34f75939e263ecbec1845 = document.querySelector('#template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845 [data-id="filterButton1"]');
+  const FILTER_BUTTON_WOMENtemplate21552949068075461daf8a76a34f75939e263ecbec1845 = document.querySelector('#template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845 [data-id="filterButton2"]');
+  let homeNewArrivalsMenSLIDERtemplate21552949068075461daf8a76a34f75939e263ecbec1845;
+  let homeNewArrivalsWomenSLIDERtemplate21552949068075461daf8a76a34f75939e263ecbec1845
+
+      homeNewArrivalsMenSLIDERtemplate21552949068075461daf8a76a34f75939e263ecbec1845 = new Swiper(`#template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845 .swiper-container-gendered[data-tag="men"] .swiper`, {
+        slidesPerView: 1,
+        spaceBetween: 25,
+        centeredSlides: true,
+        allowTouchMove: true,
+        grabCursor: true,
+        loop:true,
+        breakpoints: {
+          601: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            centeredSlides: false,
+          },
+          1400: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+            centeredSlides: false,
+          },
+        },
+        navigation: {
+          nextEl: `#template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845 .swiper-container-gendered[data-tag="men"] .swiper-next`,
+          prevEl: `#template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845 .swiper-container-gendered[data-tag="men"] .swiper-prev`,
+        },
+        pagination: {
+          el: '#template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845 .swiper-container-gendered[data-tag="men"] .swiper-pagination',
+          clickable: true,
+        },
+      });
+
+      homeNewArrivalsWomenSLIDERtemplate21552949068075461daf8a76a34f75939e263ecbec1845 = new Swiper(`#template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845 .swiper-container-gendered[data-tag="women"] .swiper`, {
+        slidesPerView: 1,
+        spaceBetween: 25,
+        centeredSlides: true,
+        allowTouchMove: true,
+        grabCursor: true,
+        loop: true,
+        breakpoints: {
+          601: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            centeredSlides: false,
+          },
+          1400: {
+            slidesPerView: 4,
+            spaceBetween: 25,
+            centeredSlides: false,
+          },
+        },
+        navigation: {
+          nextEl: `#template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845 .swiper-container-gendered[data-tag="women"] .swiper-next`,
+          prevEl: `#template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845 .swiper-container-gendered[data-tag="women"] .swiper-prev`,
+        },
+        pagination: {
+          el: '#template--{{ section.id }}__461daf8a-76a3-4f75-939e-263ecbec1845 .swiper-container-gendered[data-tag="women"] .swiper-pagination',
+          clickable: true,
+        },
+      });
+
+  function newArrivalsMenButtonHandler(e) {
+    e.target.classList.add('active');
+    FILTER_BUTTON_WOMENtemplate21552949068075461daf8a76a34f75939e263ecbec1845.classList.remove('active');
+    document.querySelector('.swiper-container-gendered[data-tag="women"]').classList.remove('shown');
+    document.querySelector('.swiper-container-gendered[data-tag="men"]').classList.add('shown');
+    homeNewArrivalsMenSLIDERtemplate21552949068075461daf8a76a34f75939e263ecbec1845.slideTo(0);
+  }
+
+  function newArrivalsWomenButtonHandler(e) {
+    e.target.classList.add('active');
+    FILTER_BUTTON_MENtemplate21552949068075461daf8a76a34f75939e263ecbec1845.classList.remove('active');
+    document.querySelector('.swiper-container-gendered[data-tag="men"]').classList.remove('shown');
+    document.querySelector('.swiper-container-gendered[data-tag="women"]').classList.add('shown');
+    homeNewArrivalsWomenSLIDERtemplate21552949068075461daf8a76a34f75939e263ecbec1845.slideTo(0);
+  }
+
+  FILTER_BUTTON_MENtemplate21552949068075461daf8a76a34f75939e263ecbec1845.addEventListener('click', newArrivalsMenButtonHandler);
+  FILTER_BUTTON_WOMENtemplate21552949068075461daf8a76a34f75939e263ecbec1845.addEventListener('click', newArrivalsWomenButtonHandler);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", newArrivalsScript, {once: true})
+  }
+  else {
+    newArrivalsScript();
+  }
+</script>

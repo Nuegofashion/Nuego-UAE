@@ -1,0 +1,143 @@
+{{ 'our_story.css' | asset_url | stylesheet_tag }}
+<style>
+  .our_story_section#template--{{ section.id }}__our_story_DpLaRc {
+    margin-top: 0px;
+    padding-top: 60px;
+    padding-bottom: 0px;
+  }
+
+  @media only screen and (max-width: 660px){
+    .our_story_section#template--{{ section.id }}__our_story_DpLaRc {
+      margin-top: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    .our_story_section#template--{{ section.id }}__our_story_DpLaRc .start_div {
+      margin-left: 11px;
+      margin-right: 11px;
+    }
+  }
+</style>
+<div class="our_story_section padding_top page-width" id="template--{{ section.id }}__our_story_DpLaRc">
+  <div class="start_div">
+    {% if section.settings.title != blank %}
+      <h2 class="title">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="our_story_media">
+      <div class="video_desktop">
+   <video
+  id="homevideo"
+  class="our_story_video"
+  width="1286"
+  height="480"
+  autoplay="autoplay"
+  controlslist="nodownload"
+  controls
+  muted="muted"
+  loop="loop"
+  playsinline="playsinline"
+  preload="metadata"
+  poster="{{ section.settings.desk_vimage | image_url: width: auto  }}?format=webp&amp;v=1719565171&amp;width=1270"
+>
+  <source
+    data-src="{{ section.settings.desk_video_url }}"
+    type="video/mp4"
+    src="{{ section.settings.desk_video_url }}"
+  >
+</video>
+
+
+      </div>
+      <div class="video_mobile" bis_skin_checked="1">
+        <video
+  id="homevideo"
+  class="our_story_video"
+  width="464"
+  height="480"
+  autoplay="autoplay"
+  controlslist="nodownload"
+  controls
+  muted="muted"
+  loop="loop"
+  playsinline="playsinline"
+  preload="metadata"
+  poster="{{ section.settings.mob_vimage | image_url: width: auto }}?format=webp&amp;v=1719565174&amp;width=320"
+>
+  <source
+    data-src="{{ section.settings.mob_video_url }}"
+    type="video/mp4"
+  >
+</video>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Our Stroy Video",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "desk_vimage",
+      "label": "Desktop Video Image"
+    },
+    {
+      "type": "text",
+      "id": "desk_video_url",
+      "label": "Desktop Video Url"
+    },
+    {
+      "type": "image_picker",
+      "id": "mob_vimage",
+      "label": "Mobile Video Image"
+    },
+    {
+      "type": "text",
+      "id": "mob_video_url",
+      "label": "Mobile Video Url"
+    }
+  ]
+}
+{% endschema %}
+<script>
+  // Lazy Load Video
+  function ourStoryScript() {
+    var lazyVideostemplate22211986915627our_story_DpLaRc = [].slice.call(document.querySelectorAll(".our_story_section video.our_story_video"));
+
+    if ("IntersectionObserver" in window) {
+      var lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(video) {
+          if (video.isIntersecting) {
+            for (var source in video.target.children) {
+              var videoSource = video.target.children[source];
+              if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+                videoSource.src = videoSource.dataset.src;
+              }
+            }
+
+            video.target.load();
+            video.target.classList.remove("lazy");
+            lazyVideoObserver.unobserve(video.target);
+          }
+        });
+      });
+
+      lazyVideostemplate22211986915627our_story_DpLaRc.forEach(function(lazyVideo) {
+        lazyVideoObserver.observe(lazyVideo);
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", ourStoryScript, {once: true});
+  }
+  else {
+    ourStoryScript();
+  }
+</script>

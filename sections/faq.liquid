@@ -1,0 +1,281 @@
+{{ 'faq.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'faq.js' | asset_url }}" defer="defer"></script>
+<div class="faq-wrapper">
+  <div class="faq-sub-wrapper">
+    <div class="faq-heading" id="scrolltop">
+      {% if section.settings.title != blank %}
+        <h1>{{ section.settings.title }}</h1>
+      {% endif %}
+    </div>
+    <div class="faq-card">
+      {% render 'faq-card1' %}
+    </div>
+    <div class="writeus-wrapper">
+      <div class="write-heading">
+        {% if section.settings.btm_txt != blank %}
+          <h3>{{ section.settings.btm_txt }}</h3>
+        {% endif %}
+      </div>
+      <div class="writeus-section">
+        <div class="mail-box" bis_skin_checked="1">
+          <div class="mail-icon" bis_skin_checked="1">
+            {% render 'mail-icon' %}
+          </div>
+          <h3 class="faqOpen">Write to Us</h3>
+        </div>
+        <a href="tel:{{ section.settings.mobile_no }}" class="call-tel">
+          <div class="call-box" bis_skin_checked="1">
+            <div class="mail-icon" bis_skin_checked="1">
+              {% render 'mail-icon' %}
+            </div>
+            <div class="mail-text" bis_skin_checked="1">
+              <div class="mail-text-mobile" bis_skin_checked="1">
+                <h3 class="fordesktopcall">{{ section.settings.mobile_no }}</h3>
+                <h3 class="formobilecall">call us</h3>
+              </div>
+              <p class="desktop-call">{{ section.settings.working_days }}</p>
+            </div>
+          </div>
+          <p class="mobile-call">{{ section.settings.working_days }}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "faq1_txt",
+      "label": "FAQ Text 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_faq1",
+      "label": "Icon 1"
+    },
+    {
+      "type": "text",
+      "id": "faq2_txt",
+      "label": "FAQ Text 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_faq2",
+      "label": "Icon 2"
+    },
+    {
+      "type": "text",
+      "id": "faq3_txt",
+      "label": "FAQ Text 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_faq3",
+      "label": "Icon 3"
+    },
+    {
+      "type": "text",
+      "id": "faq4_txt",
+      "label": "FAQ Text 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_faq4",
+      "label": "Icon 4"
+    },
+    {
+      "type": "text",
+      "id": "faq5_txt",
+      "label": "FAQ Text 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_faq5",
+      "label": "Icon 5"
+    },
+    {
+      "type": "text",
+      "id": "faq6_txt",
+      "label": "FAQ Text 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_faq6",
+      "label": "Icon 6"
+    },
+    {
+      "type": "text",
+      "id": "faq7_txt",
+      "label": "FAQ Text 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_faq7",
+      "label": "Icon 7"
+    },
+    {
+      "type": "text",
+      "id": "faq8_txt",
+      "label": "FAQ Text 8"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_faq8",
+      "label": "Icon 8"
+    },
+    {
+      "type": "text",
+      "id": "btm_txt",
+      "label": "Bottom Text"
+    },
+    {
+      "type": "text",
+      "id": "mobile_no",
+      "label": "Mobile Number"
+    },
+     {
+      "type": "text",
+      "id": "working_days",
+      "label": "Working Days"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote1",
+      "name": "FAQ 1",
+      "settings": [
+        {
+         "type":      "text",
+         "id":        "question",
+         "label":     "Question"
+        },
+        {
+         "type":      "richtext",
+         "id":        "answer",
+         "label":     "Answer"
+        }
+      ]
+    },
+    {
+      "type": "quote2",
+      "name": "FAQ 2",
+      "settings": [
+        {
+         "type":      "text",
+         "id":        "question",
+         "label":     "Question"
+        },
+        {
+         "type":      "richtext",
+         "id":        "answer",
+         "label":     "Answer"
+        }
+      ]
+    },
+    {
+      "type": "quote3",
+      "name": "FAQ 3",
+      "settings": [
+        {
+         "type":      "text",
+         "id":        "question",
+         "label":     "Question"
+        },
+        {
+         "type":      "richtext",
+         "id":        "answer",
+         "label":     "Answer"
+        }
+      ]
+    },
+    {
+      "type": "quote4",
+      "name": "FAQ 4",
+      "settings": [
+        {
+         "type":      "text",
+         "id":        "question",
+         "label":     "Question"
+        },
+        {
+         "type":      "richtext",
+         "id":        "answer",
+         "label":     "Answer"
+        }
+      ]
+    },
+    {
+      "type": "quote5",
+      "name": "FAQ 5",
+      "settings": [
+        {
+         "type":      "text",
+         "id":        "question",
+         "label":     "Question"
+        },
+        {
+         "type":      "richtext",
+         "id":        "answer",
+         "label":     "Answer"
+        }
+      ]
+    },
+    {
+      "type": "quote6",
+      "name": "FAQ 6",
+      "settings": [
+        {
+         "type":      "text",
+         "id":        "question",
+         "label":     "Question"
+        },
+        {
+         "type":      "richtext",
+         "id":        "answer",
+         "label":     "Answer"
+        }
+      ]
+    },
+    {
+      "type": "quote7",
+      "name": "FAQ 7",
+      "settings": [
+        {
+         "type":      "text",
+         "id":        "question",
+         "label":     "Question"
+        },
+        {
+         "type":      "richtext",
+         "id":        "answer",
+         "label":     "Answer"
+        }
+      ]
+    },
+    {
+      "type": "quote8",
+      "name": "FAQ 8",
+      "settings": [
+        {
+         "type":      "text",
+         "id":        "question",
+         "label":     "Question"
+        },
+        {
+         "type":      "richtext",
+         "id":        "answer",
+         "label":     "Answer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

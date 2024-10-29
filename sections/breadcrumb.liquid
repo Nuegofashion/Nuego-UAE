@@ -1,0 +1,63 @@
+{% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
+  <nav class="breadcrumb page-width" role="navigation" aria-label="breadcrumbs">
+    <a href="/" title="Home">Home</a>
+
+    {% if template contains 'page' %}
+      <span aria-hidden="true">&rsaquo;</span>
+      <span>{{ page.title }}</span>
+
+    {% elsif template contains 'product' %}
+      {% if product %}
+        {% assign collection_handle = product.collections.first.handle %}
+        {% assign collection = collections[collection_handle] %}
+
+        {% if collection %}
+          <span aria-hidden="true">&rsaquo;</span>
+          <a href="{{ collection.url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+
+          <span aria-hidden="true">&rsaquo;</span>
+        {% endif %}
+
+        <span>{{ product.title }}</span>
+
+      {% else %}
+        <span>{{ product.title }}</span>
+      {% endif %}
+
+    {% elsif template contains 'collection' and collection.handle %}
+      <span aria-hidden="true">&rsaquo;</span>
+      {% if current_tags %}
+        <a href="/collections/{{ collection.handle }}" title="{{ collection.title }}">{{ collection.title }}</a>
+
+        <span aria-hidden="true">&rsaquo;</span>
+        <span>{{ current_tags | join: ' + ' }}</span>
+
+      {% else %}
+        <span>{{ collection.title }}</span>
+      {% endif %}
+
+    {% elsif template == 'blog' %}
+      <span aria-hidden="true">&rsaquo;</span>
+      {% if current_tags %}
+        <a href="{{ blog.url }}" title="{{ blog.title }}">{{ blog.title }}</a>
+
+        <span aria-hidden="true">&rsaquo;</span>
+        <span>{{ current_tags | join: ' + ' }}</span>
+
+      {% else %}
+        <span>{{ blog.title }}</span>
+      {% endif %}
+
+    {% elsif template == 'article' %}
+      <span aria-hidden="true">&rsaquo;</span>
+      <a href="{{ blog.url }}" title="{{ blog.title }}">{{ blog.title }}</a>
+
+      <span aria-hidden="true">&rsaquo;</span>
+      <span>{{ article.title }}</span>
+
+    {% else %}
+      <span aria-hidden="true">&rsaquo;</span>
+      <span>{{ page_title }}</span>
+    {% endif %}
+  </nav>
+{% endunless %}

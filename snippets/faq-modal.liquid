@@ -1,0 +1,116 @@
+<div id="faqModal" class="faq-main-container" bis_skin_checked="1" style="display: none;">
+  <div class="faq-modal-content" bis_skin_checked="1">
+    <div class="faq-title-container" bis_skin_checked="1">
+      <h3 class="faqTitleModal">Write to Us</h3>
+      <span onclick="faqModal(this)" class="faq-close">×</span>
+    </div>
+    <div class="faqModalBody" bis_skin_checked="1">
+      <form>
+        <h6 class="formSpliter">Personal Details</h6>
+        <div class="form-group" bis_skin_checked="1">
+          <div class="form-input-container" bis_skin_checked="1">
+            <label class="form-label">Full name *</label>
+            <div class="form-data" bis_skin_checked="1">
+              <input class="form-control form-input fname" type="text" placeholder="Enter your full name" required="">
+              <span class="error-fname">Enter Name.</span>
+            </div>
+          </div>
+          <div class="form-input-container" bis_skin_checked="1">
+            <label class="form-label">Email address</label>
+            <div class="form-data" bis_skin_checked="1">
+              <input class="form-control form-input email" type="email" placeholder="Enter Registered Email ID">
+              <span class="error-email">Invalid Email</span>
+            </div>
+          </div>
+          <div class="form-input-container" bis_skin_checked="1">
+            <label class="form-label">Mobile *</label>
+            <div class="form-data" bis_skin_checked="1">
+              <input
+                class="form-control form-input phoneNumber"
+                type="number"
+                placeholder="Enter mobile no"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength="10"
+              >
+              <span class="error-phoneNumber">Invalid PhoneNumber</span>
+            </div>
+          </div>
+        </div>
+        <h6 class="formSpliter">Query Details</h6>
+        <div class="form-input-container" bis_skin_checked="1">
+          <label class="form-label">Reason Type *</label>
+          <div class="form-data" bis_skin_checked="1">
+            <select onchange="updateReasonOptions(this)" class="form-control form-input reasonType" required="">
+              <option value="">Select reason type</option>
+              <option value="1: Order Related">Order Related</option>
+              <option value="2: Non Order Related">Non Order Related</option>
+            </select>
+            <span class="error-reasonType">Please Select a option</span>
+          </div>
+        </div>
+        <div class="form-input-container" bis_skin_checked="1">
+          <label class="form-label">Reason *</label>
+          <div class="form-data" bis_skin_checked="1">
+            <select onchange="updateReasonOptions(this)" class="form-control form-input reason" required="" disabled="">
+              <option value="">Select reason</option>
+            </select>
+            <span class="error-reason">Please Select a option</span>
+          </div>
+        </div>
+        <div class="form-input-container" bis_skin_checked="1">
+          <label class="form-label">Sub Reason *</label>
+          <div class="form-data" bis_skin_checked="1">
+            <select
+              onchange="updateReasonOptions(this)"
+              class="form-control form-input subReason"
+              required=""
+              disabled=""
+            >
+              <option value="">Select Sub reason.</option>
+            </select>
+            <span class="error-subReason">Please Select a option</span>
+          </div>
+        </div>
+        <div class="form-input-container" bis_skin_checked="1">
+          <label class="form-label">Order Id</label>
+          <div class="form-data" bis_skin_checked="1">
+            <input
+              class="form-control form-input orderID"
+              type="text"
+              placeholder="Enter order id"
+              pattern="^[Jj][Cc][Kk]\d+$"
+            >
+            <span class="error-orderID">Invalid order id</span>
+          </div>
+        </div>
+        <h6 class="formSpliter">Additional Details</h6>
+        <div class="form-input-container" bis_skin_checked="1">
+          <label class="form-label">Upload files</label>
+          <div class="form-data" bis_skin_checked="1">
+            <input
+              class="form-control form-input faqFile"
+              type="file"
+              accept=".jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.pdf,.txt"
+              multiple=""
+            >
+            <span class="error-file">Max Limit 1mb</span>
+            <span class="error-file-empty">No file uploaded</span>
+          </div>
+        </div>
+        <div class="form-input-container" bis_skin_checked="1">
+          <label class="form-label">Others *</label>
+          <div class="form-data" bis_skin_checked="1">
+            <textarea class="form-control form-input faqOthers" maxlength="256" placeholder="Others"></textarea>
+            <span class="error-faqOthers">Enter Valid Message</span>
+          </div>
+        </div>
+        <div class="success-faq-text" bis_skin_checked="1">Your response has been submitted successfully!</div>
+        <div class="form-input-container" bis_skin_checked="1">
+          <div class="form-button-container" bis_skin_checked="1">
+            <button type="button" class="form-button formBtnLoad" onclick="getFaqFormData(this)">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,346 @@
+{{ 'pdp_dropdown_section.css' | asset_url | stylesheet_tag }}
+{{ 'custom-product-page.css' | asset_url | stylesheet_tag }}
+<style>
+  .pdp_dropdown_section{margin-top:68px;}
+  @media(max-width:986px){
+  .pdp_dropdown_section{margin-top:17px;}
+  }
+  .dropdownmodal-imgcontainer{
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+  .dropdownmodal-imgcontainer img:hover , .dropdownmodal-imgcontainer:hover .dropdownmodal-imgcontainer .img{
+    opacity:0;
+  }
+  .dropdownmodal-imgcontainer img:hover{
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+  }
+</style>
+<div class="pdp_dropdown_section product-page-width">
+  {% if product.description != blank %}
+    <div class="dropdown1">
+      <div class="question">
+        <p>
+          Product Description
+          <span>
+            {% render 'down-arrow' %}
+          </span>
+        </p>
+        <div class="answer">
+          {% if product.metafields.custom.product_description_image.value != blank %}
+            <div class="descimgs">
+              <div class="swiper mySwiper dropdown1Swiper">
+                <div class="swiper-wrapper">
+                  {%- for image in product.metafields.custom.product_description_image.value -%}
+                    <div
+                      class="swiper-slide swiper-slide-active"
+                      role="group"
+                      aria-label="{{ forloop.index }} / 5"
+                      bis_skin_checked="1"
+                    >
+                      <div
+                        class="imgDiv"
+                        onclick="showModal('{{ image.src | image_url }}')"
+                        bis_skin_checked="1"
+                      >
+                        <img
+                          src="{{ image.src | image_url }}&amp;width=400"
+                          alt=""
+                          srcset="{{ image.src | image_url }}&amp;width=352 352w, {{ image.src | image_url }}&amp;width=400 400w"
+                          width="400"
+                          height="472"
+                          loading="lazy"
+                        >
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+                <div
+                  class="swiper-pagination-{{ section.id }}__2ebdee04-a4cb-4e23-b3c2-50c297e2894d swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+                  bis_skin_checked="1"
+                ></div>
+              </div>
+            </div>
+          {% endif %}
+          {{ product.description }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% unless product.metafields.custom.ideal_for_icon.value == blank %}
+    <div class="dropdown2">
+      <div class="question">
+        <p>
+          Ideal For
+          <span>
+            {% render 'down-arrow' %}
+          </span>
+        </p>
+        <div class="answer">
+          <div class="idealImages">
+            {%- for image in product.metafields.custom.ideal_for_icon.value -%}
+              <div class="idealCard">
+                <div class="idealImgDiv">
+                  <img
+                    width="36"
+                    height="36"
+                    src="{{ image.src | image_url }}"
+                    alt="{{ image.alt }}"
+                    loading="lazy"
+                    class="ideimg"
+                  >
+                </div>
+                {%- unless product.metafields.custom.ideal_for_title.value[forloop.index0] == blank -%}
+                  <div class="idealSub">
+                    <p>{{ product.metafields.custom.ideal_for_title.value[forloop.index0] }}</p>
+                  </div>
+                {% endunless %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endunless %}
+  {% unless product.metafields.custom.washing_instructions_icon.value == blank %}
+    <div class="dropdown3">
+      <div class="question" bis_skin_checked="1">
+        <p>
+          Washing Instructions
+          <span>
+            {% render 'down-arrow' %}
+          </span>
+        </p>
+      </div>
+      <div class="answer">
+        {%- for image in product.metafields.custom.washing_instructions_icon.value -%}
+          <div class="washing__card">
+            <div class="washImgs">
+              <img
+                width="37"
+                height="36"
+                src="{{ image.src | image_url }}"
+                alt="{{ image.alt }}"
+                loading="lazy"
+                class="ideimg"
+              >
+            </div>
+            {%- unless product.metafields.custom.washing_instructions_title.value[forloop.index0] == blank -%}
+              <p>{{ product.metafields.custom.washing_instructions_title.value[forloop.index0] }}</p>
+            {% endunless %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endunless %}
+  {% if section.settings.manufacturing_details != blank %}
+    <div class="dropdown5">
+      <div class="question" bis_skin_checked="1">
+        <p>
+          Manufacturing Details
+          <span>
+            {% render 'down-arrow' %}
+          </span>
+        </p>
+      </div>
+      <div class="answer" bis_skin_checked="1">
+        <div class="manuImg" bis_skin_checked="1">
+          <p>Country of Origin</p>
+          <div class="countryDiv" bis_skin_checked="1">
+            <img
+              srcset="{{ section.settings.country_image | img_url: 'master' }}"
+              src="{{ section.settings.country_image | img_url: 'master' }}&amp;width=1500"
+              sizes="(min-width: 1600px) 750px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+              alt=""
+              loading="lazy"
+              width="63"
+              height="25"
+            >
+          </div>
+        </div>
+        <div class="manuinfo" bis_skin_checked="1">
+          <div class="metafield-rich_text_field" bis_skin_checked="1">
+            {{ section.settings.manufacturing_details }}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  <div class="dropdownmodal-container" onclick="closeAplusZoomModal(window.event || event)" bis_skin_checked="1">
+    <div class="zoomSliderParent" style="display:flex;justify-content:center;align-items:center;" bis_skin_checked="1">
+      <div class="close-modal-btn" onclick="closedropdownModal()" bis_skin_checked="1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="26" viewBox="0 0 16 16" fill="#fff">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="m8 8.707 3.646 3.647.708-.707L8.707 8l3.647-3.646-.707-.708L8 7.293 4.354 3.646l-.707.708L7.293 8l-3.646 3.646.707.708L8 8.707z"></path>
+        </svg>
+      </div>
+      <div class="dropdownmodal" bis_skin_checked="1">
+        <div
+          class="dropdownmodal-imgcontainer"
+          onmouseleave="resetZoomAplus(window.event || event)"
+          onmousemove="zoomAplus(window.event || event)"
+          ontouchstart="zoomAplus(window.event || event)"
+          bis_skin_checked="1"
+        >
+          <img id="dropdownImage" src="" alt="dropdown Image" width="400px" height="auto" loading="eager">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% if product.metafields.custom.product_description_image.value != blank %}
+  <script>
+    function showModal(imageUrl) {
+      var modal = document.querySelector('.dropdownmodal-container');
+      var body = document.querySelector('body');
+      modal.style.display = 'flex';
+      var dropdownImage = document.getElementById('dropdownImage');
+      dropdownImage.src = imageUrl;
+      dropdownImage.style.display = 'block';
+      body.style.overflow = 'hidden';
+    }
+
+    function closeAplusZoomModal(e){
+      if(e.target !== document.getElementById('dropdownImage')) closedropdownModal();
+    }
+
+    function closedropdownModal() {
+      var modal = document.querySelector('.dropdownmodal-container');
+      var body = document.querySelector('body');
+      modal.style.animation = 'popOut 0.3s ease';
+      setTimeout(function() {
+        modal.style.display = 'none';
+        modal.style.animation = '';
+      }, 300);
+      body.style.overflow = 'auto';
+    }
+
+    // Preload images
+    document.addEventListener('DOMContentLoaded', function() {
+      var imageUrls = [
+
+          '//www.jockey.in/cdn/shop/files/MV10_01_16Mar2024.webp?v=1710590305',
+
+          '//www.jockey.in/cdn/shop/files/MV10_02_16Mar2024_6ae0e3f1-9764-404f-997b-c0a9dc82e178.webp?v=1710590333',
+
+          '//www.jockey.in/cdn/shop/files/MV10_03_16Mar2024_9624cafc-f527-411f-925f-e18429faaad2.webp?v=1710590333',
+
+          '//www.jockey.in/cdn/shop/files/MV10_04_16Mar2024_e0a3c02f-0c2d-4df2-a004-eaff211a30f5.webp?v=1710590333',
+
+          '//www.jockey.in/cdn/shop/files/MV10_05_16Mar2024_1b5008f6-18e5-477c-af37-c21d54970fd5.webp?v=1710590333'
+
+      ];
+      imageUrls.forEach(function(url) {
+        var img = new Image();
+        img.src = url;
+      });
+    });
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      var swiper = new Swiper(".dropdown1Swiper", {
+        pagination: {
+          el: ".swiper-pagination-{{ section.id }}__2ebdee04-a4cb-4e23-b3c2-50c297e2894d",
+          clickable: true,
+        },
+        slidesPerView: 1.6,
+        spaceBetween: 10,
+        breakpoints: {
+          968: {
+            slidesPerView: 4.2,
+            spaceBetween: 15,
+          },
+        },
+      });
+    });
+  </script>
+  <script>
+
+const container = document.querySelector('.dropdownmodal-imgcontainer');
+const image = container.querySelector('img');
+
+let zoomLevel = 1;
+const maxZoom = 5;
+const minZoom = 1;
+
+const enterImage = function(e) {
+  move(e);
+};
+
+const leaveImage = function() {
+  container.style.backgroundPosition = `center`;
+  container.style.backgroundImage = `unset`
+  container.querySelector('img').style.opacity=1;
+  container.style.width="auto";
+};
+
+const move = function(e) {
+  e.preventDefault();
+  console.log(e);
+
+  let posX, posY, touch = false;
+
+  if (e.touches) {
+    posX = e.touches[0].clientX;
+    posY = e.touches[0].clientY;
+    touch = true;
+  } else {
+    posX = e.clientX;
+    posY = e.clientY;
+  }
+
+  const rect = container.getBoundingClientRect();
+  const offsetX = posX - rect.left;
+  const offsetY = posY - rect.top;
+
+  const percX = (offsetX / rect.width) * 100;
+  const percY = (offsetY / rect.height) * 100;
+
+  container.style.backgroundPosition = `${percX}% ${percY}%`;
+  container.style.backgroundImage = 'url('+container.querySelector('img').src+')';
+  container.style.backgroundSize = '150%';
+  // container.style.width="720px";
+  container.querySelector('img').style.opacity=0;
+};
+
+const zooms = function(e) {
+  e.preventDefault();
+  console.log(e);
+  e.deltaY > 0 ? zoomLevel-- : zoomLevel++;
+  
+    if (zoomLevel < minZoom) zoomLevel = minZoom;
+    if (zoomLevel > maxZoom) zoomLevel = maxZoom;
+  
+    container.style.backgroundSize = `${100 * zoomLevel}%`;
+  };
+  
+  container.addEventListener('mouseover', enterImage);
+  container.addEventListener('touchstart', enterImage);
+  
+  container.addEventListener('mouseout', leaveImage);
+  container.addEventListener('touchend', leaveImage);
+  
+  container.addEventListener('mousemove', move);
+  container.addEventListener('touchmove', move);
+  
+  container.addEventListener('wheel', zooms);
+  </script>
+{% endif %}
+{% schema %}
+{
+  "name": "Product Detail",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "manufacturing_details",
+      "label": "Manufacturing Details"
+    },
+    {
+      "type": "image_picker",
+      "id": "country_image",
+      "label": "Country Icon"
+    }
+  ]
+}
+{% endschema %}

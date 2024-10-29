@@ -1,0 +1,141 @@
+
+  .get-in-touch-wrapper {
+    width: 100%;
+    padding: 0 15rem;
+    font-family: 'Jost-Regular';
+}
+  .get-in-touch-wrapper span a{
+    color: #000;
+}
+  .contactMobile,contactEmail,contactAddress{
+    font-size:13px;
+    margin:5px 0;
+  }
+  .get-in-touch-wrapper div{
+    margin:15px 0;
+        font-size: calc(13 * (100vw / 1440));
+       font-family: 'Jost-medium';
+    padding-right: 2px;
+        color: #000;
+  }
+  .get-in-touch-wrapper div a{
+        color: #000;
+  }
+  .get-in-touch-hrading {
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 1px solid #d7d7d7;
+/*     border-top: 1px solid #d7d7d7; */
+}
+  .get-in-content img {
+    
+     vertical-align: text-top;
+}
+  .contactAddress {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+}
+  .contactEmail {
+    display: flex;
+    gap: 5px;
+}
+  .contactMobile {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+}
+table:not([class]) {
+    border: 1px solid #d7d7d7;
+    margin-top: 20px;
+    vertical-align: text-top;
+width: 49%;
+}
+  .get-in-content {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+   justify-content: space-between;
+}
+ .get-in-content tbody {
+    display: flex;
+}
+ .get-in-content td {
+    width: 100%;
+}
+  .get-in-content h3 {
+    margin-bottom: 10px;
+}
+  .col-12.padding-0 {
+    margin-top: 0;
+}
+  .get-in-touch-wrapper h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+  .get-in-touch-wrapper h4 {
+    color: #454545;
+            font-size: calc(12 * (100vw / 1440));
+        font-family: 'Jost-bold';
+}
+  .row {
+    display: flex;
+    margin-top: 27px;
+    margin-bottom: 5px !important;
+}
+  .col-lg-6.col-md-6.border-left {
+    border-left: 1px solid;
+    padding-left: 33px;
+}
+  .col-12.frachiseEnquiry {
+    border: 1px solid;
+       width: 66%;
+    padding: 8px;
+    text-align: center;
+        border-radius: 10px;
+}
+  .col-12.frachiseEnquiry a {
+  color:black;
+    text-decoration: none;
+            font-size: calc(11 * (100vw / 1440));
+    font-family: "jost-medium";
+}
+  .col-12 img {
+   
+  }
+   @media screen and (max-width: 1100px){
+  .row {
+    flex-direction: column;
+  }
+     .get-in-touch-wrapper div{
+        font-size: 13px;
+  }
+      .get-in-touch-wrapper h4 {
+            font-size:12px;
+}
+      .col-12.frachiseEnquiry a {
+            font-size: 11px;
+}
+    table:not([class]) {
+    width: 100%;
+}
+/*      .get-in-touch-wrapper div {
+    white-space: nowrap;
+} */
+     .col-lg-6.col-md-6.border-left {
+    border-left: none;
+    padding-left: 0;
+}
+     .get-in-touch-wrapper {
+    padding: 0 2rem;
+}
+     .get-in-content {
+    row-gap: 0px;
+}
+     .get-in-content img {
+    width: 6%;
+}
+     .col-12.frachiseEnquiry {
+    width: 95%;
+}
+   }

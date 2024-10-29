@@ -1,0 +1,307 @@
+{{ 'home-featured-category.css' | asset_url | stylesheet_tag }}
+<style>
+  .myBtn {
+    position: absolute;
+  }
+  .home-featured-category.home-featured-category-margin {
+      margin-top: 0px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+  }
+
+  @media screen and (max-width: 600px){
+    .home-featured-category.home-featured-category-margin{
+      margin-top: 0px;
+    }
+  }
+</style>
+<div
+  class="home-featured-category home-featured-main-category home-featured-category-margin"
+  id="template--{{ section.id }}__home_featured_category_L839gW"
+>
+  <div class="home-featured-cat page-width">
+    <div class="home-top-featured_text_main_left-content">
+      <div class="home-top-featured_text_main_left-content_inner_div">
+        {% if section.settings.title != blank %}
+          <h3 class="home-top-featured_text_first">
+            <strong>{{ section.settings.title }}</strong>
+          </h3>
+        {% endif %}
+        {% if section.settings.stitle != blank %}
+          <h3 class="home-top-featured_text_second">{{ section.settings.stitle }}</h3>
+        {% endif %}
+      </div>
+      <div class="home-top-featured_text_main_right-content_inner_div">
+        <h3 class="home-left-men-button multi-button-clicked">{{ section.settings.tab_name1 }}</h3>
+        <h3 class="home-right-women-button">{{ section.settings.tab_name2 }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="home-featured-bottom-sec1 page-width active">
+    <div class="swiper home-featured-category1">
+      <div class="swiper-wrapper">
+        {% assign men = section.blocks | where: 'type', 'quote' %}
+        {%- for block in men -%}
+          <div class="swiper-slide home-featured-men-slide-div">
+            <a href="{{ block.settings.link }}" class="featured-card">
+              {% if block.settings.mob_image != blank %}
+                <img
+                  src="{{ block.settings.mob_image | image_url: width: auto}}"
+                  loading="lazy"
+                  width="auto"
+                  height="auto"
+                  class="home-featured-men-slide-div_container_mobile"
+                >
+              {% endif %}
+              {% if block.settings.desk_image != blank %}
+                <img
+                  src="{{ block.settings.desk_image | image_url: width: auto}}"
+                  loading="lazy"
+                  width="auto"
+                  height="auto"
+                  class="home-featured-men-slide-div_container"
+                >
+              {% endif %}
+            </a>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    <div
+      class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+    ></div>
+    <div
+      class="swiper-button-next"
+      tabindex="0"
+      role="button"
+      aria-label="Next slide"
+      aria-controls="swiper-wrapper-fe4d46a58821c9af"
+      aria-disabled="false"
+      bis_skin_checked="1"
+    >
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.1994 12.1345C1.78663 12.4965 1.1307 12.4906 0.724524 12.1225C0.319663 11.7533 0.313068 11.1571 0.711379 10.7818L5.22673 6.67852L0.712724 2.57519H0.71141C0.508976 2.39715 0.393299 2.1522 0.39067 1.89527C0.388041 1.63956 0.499776 1.39222 0.698266 1.21058C0.898071 1.03015 1.17016 0.928577 1.45149 0.93097C1.7341 0.933359 2.00357 1.03851 2.19946 1.22253L7.4575 6.0022C7.86764 6.37622 7.86764 6.98083 7.4575 7.35485L2.1994 12.1345Z"></path>
+      </svg>
+    </div>
+    <div
+      class="swiper-button-prev"
+      tabindex="-1"
+      role="button"
+      aria-label="Previous slide"
+      aria-controls="swiper-wrapper-fe4d46a58821c9af"
+      aria-disabled="true"
+      bis_skin_checked="1"
+    >
+      <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.57228 0.415497C7.03091 0.0017125 7.75973 0.00852947 8.21103 0.429154C8.66088 0.851119 8.66821 1.53256 8.22564 1.96137L3.20858 6.65089L8.22414 11.3404H8.2256C8.45053 11.5439 8.57906 11.8238 8.58198 12.1175C8.5849 12.4097 8.46075 12.6924 8.24021 12.9C8.0182 13.1062 7.71588 13.2223 7.4033 13.2195C7.08928 13.2168 6.78987 13.0966 6.57222 12.8863L0.729949 7.42383C0.274234 6.99638 0.274234 6.30539 0.729949 5.87794L6.57228 0.415497Z"></path>
+      </svg>
+    </div>
+  </div>
+  <div class="home-featured-bottom-sec2 page-width">
+    <div class="swiper home-featured-category2">
+      <div class="swiper-wrapper">
+        {% assign women = section.blocks | where: 'type', 'quote2' %}
+        {%- for block in women -%}
+          <div class="swiper-slide home-featured-women-slide-div">
+            <a href="{{ block.settings.link }}" class="featured-card">
+              {% if block.settings.mob_image != blank %}
+                <img
+                  src="{{ block.settings.mob_image | image_url: width: auto}}"
+                  loading="lazy"
+                  width="auto"
+                  height="auto"
+                  class="home-featured-women-slide-div_container_mobile"
+                >
+              {% endif %}
+              {% if block.settings.desk_image != blank %}
+                <img
+                  src="{{ block.settings.desk_image | image_url: width: auto}}"
+                  loading="lazy"
+                  width="auto"
+                  height="auto"
+                  class="home-featured-women-slide-div_container"
+                >
+              {% endif %}
+            </a>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    <div
+      class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+    ></div>
+    <div
+      class="swiper-button-next"
+      tabindex="0"
+      role="button"
+      aria-label="Next slide"
+      aria-controls="swiper-wrapper-a443c005c4cccadc"
+      aria-disabled="false"
+      bis_skin_checked="1"
+    >
+      <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.1994 12.1345C1.78663 12.4965 1.1307 12.4906 0.724524 12.1225C0.319663 11.7533 0.313068 11.1571 0.711379 10.7818L5.22673 6.67852L0.712724 2.57519H0.71141C0.508976 2.39715 0.393299 2.1522 0.39067 1.89527C0.388041 1.63956 0.499776 1.39222 0.698266 1.21058C0.898071 1.03015 1.17016 0.928577 1.45149 0.93097C1.7341 0.933359 2.00357 1.03851 2.19946 1.22253L7.4575 6.0022C7.86764 6.37622 7.86764 6.98083 7.4575 7.35485L2.1994 12.1345Z"></path>
+      </svg>
+    </div>
+    <div
+      class="swiper-button-prev swiper-button-disabled"
+      tabindex="-1"
+      role="button"
+      aria-label="Previous slide"
+      aria-controls="swiper-wrapper-a443c005c4cccadc"
+      aria-disabled="true"
+      bis_skin_checked="1"
+    >
+      <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.57228 0.415497C7.03091 0.0017125 7.75973 0.00852947 8.21103 0.429154C8.66088 0.851119 8.66821 1.53256 8.22564 1.96137L3.20858 6.65089L8.22414 11.3404H8.2256C8.45053 11.5439 8.57906 11.8238 8.58198 12.1175C8.5849 12.4097 8.46075 12.6924 8.24021 12.9C8.0182 13.1062 7.71588 13.2223 7.4033 13.2195C7.08928 13.2168 6.78987 13.0966 6.57222 12.8863L0.729949 7.42383C0.274234 6.99638 0.274234 6.30539 0.729949 5.87794L6.57228 0.415497Z"></path>
+      </svg>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Home Feature Category",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "stitle",
+      "label": "Sub Title"
+    },
+    {
+      "type": "text",
+      "id": "tab_name1",
+      "label": "Tab Name"
+    },
+    {
+      "type": "text",
+      "id": "tab_name2",
+      "label": "Tab Name"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Men",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desk_image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mob_image",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "quote2",
+      "name": "Women",
+      "settings": [
+         {
+          "type": "image_picker",
+          "id": "desk_image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mob_image",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<script>
+    function homeFeaturedCategoryScript(){
+      let homefeaturedcategoriesswipertemplate22211986915627home_featured_category_L839gW = new Swiper("#template--{{ section.id }}__home_featured_category_L839gW .home-featured-bottom-sec1 .swiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        slidesOffsetAfter: 30,
+        navigation: {
+          nextEl: "#template--{{ section.id }}__home_featured_category_L839gW .home-featured-bottom-sec1 .swiper-button-next",
+          prevEl: "#template--{{ section.id }}__home_featured_category_L839gW .home-featured-bottom-sec1 .swiper-button-prev",
+        },
+        pagination: {
+          el: "#template--{{ section.id }}__home_featured_category_L839gW .home-featured-bottom-sec1 .swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          0: { /* when window >=0px - webflow mobile landscape/portriat */
+            slidesPerView: 1.5,
+            spaceBetween: 17,
+          },
+          767: { /* when window >= 767px - webflow tablet */
+            slidesPerView: 4.2,
+            spaceBetween: 12,
+          }
+        }
+
+      });
+
+    let homefeaturedcategoriesswiper2template22211986915627home_featured_category_L839gW = new Swiper("#template--{{ section.id }}__home_featured_category_L839gW .home-featured-bottom-sec2 .swiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      slidesOffsetAfter: 30,
+      navigation: {
+        nextEl: "#template--{{ section.id }}__home_featured_category_L839gW .home-featured-bottom-sec2 .swiper-button-next",
+        prevEl: "#template--{{ section.id }}__home_featured_category_L839gW .home-featured-bottom-sec2 .swiper-button-prev",
+      },
+      pagination: {
+        el: "#template--{{ section.id }}__home_featured_category_L839gW .home-featured-bottom-sec2 .swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        0: { /* when window >=0px - webflow mobile landscape/portriat */
+          slidesPerView: 1.5,
+          spaceBetween: 17,
+        },
+        767: { /* when window >= 767px - webflow tablet */
+          slidesPerView: 4.2,
+          spaceBetween: 12,
+        }
+      }
+    });
+
+  document.querySelector(".home-left-men-button").addEventListener("click",function(){
+    if (document.querySelector(".home-featured-bottom-sec1").style.display=="" || document.querySelector(".home-featured-bottom-sec1").style.display=="none"){
+      document.querySelector(".home-left-men-button").classList.add("multi-button-clicked");
+      document.querySelector(".home-right-women-button").classList.remove("multi-button-clicked");
+      document.querySelector(".home-featured-bottom-sec2").classList.remove('active');
+      document.querySelector(".home-featured-bottom-sec1").classList.add('active');
+    }
+  })
+  document.querySelector(".home-right-women-button").addEventListener("click",function(){
+    if (document.querySelector(".home-featured-bottom-sec2").style.display=="" || document.querySelector(".home-featured-bottom-sec2").style.display=="none"){
+      document.querySelector(".home-left-men-button").classList.remove("multi-button-clicked");
+      document.querySelector(".home-right-women-button").classList.add("multi-button-clicked");
+      document.querySelector(".home-featured-bottom-sec1").classList.remove('active');
+      document.querySelector(".home-featured-bottom-sec2").classList.add('active');
+    }
+  })
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", homeFeaturedCategoryScript, {once: true})
+  }
+  else {
+    homeFeaturedCategoryScript();
+  }
+</script>
